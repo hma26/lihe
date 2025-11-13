@@ -1,54 +1,62 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <meta name="format-detection" content="telephone=no">
     <title>LIHE - Ignite Your Future</title>
-    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Font: Oswald (Headings) & Roboto (Body) --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Oswald (Headings) & Roboto (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <link rel="shortcut icon" href="logo/favi.png" type="image/x-icon" />
-    
-    <!-- Three.js CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
     <style>
         /* Custom styles */
         body {
             font-family: 'Roboto', sans-serif;
-            overflow-x: hidden; /* Prevent horizontal scrollbars */
-            -webkit-text-size-adjust: 100%; /* Prevent text scaling on iOS */
-            -webkit-tap-highlight-color: transparent; /* Remove tap highlights */
+            overflow-x: hidden;
+            /* Prevent horizontal scrollbars */
+            -webkit-text-size-adjust: 100%;
+            /* Prevent text scaling on iOS */
+            -webkit-tap-highlight-color: transparent;
+            /* Remove tap highlights */
             /* ENHANCEMENT: Improved default text rendering */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-        
+
         /* Glassmorphism Effects from test.html */
         .glass-panel {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 
+            box-shadow:
                 0 8px 32px 0 rgba(31, 38, 135, 0.37),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
-        
+
         .glass-panel-white {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 
+            box-shadow:
                 0 8px 32px 0 rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
-        
+
         /* Enhanced Gradients */
         .text-gradient-red {
             background: linear-gradient(135deg, #ef4444, #dc2626, #b91c1c);
@@ -56,11 +64,11 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .bg-gradient-enhanced {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d1b3d 50%, #1a1a1a 100%);
         }
-        
+
         /* Subtle dot grid overlay */
         .subtle-dot-grid {
             position: absolute;
@@ -68,12 +76,12 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
             background-size: 30px 30px;
             opacity: 0.3;
             pointer-events: none;
         }
-        
+
         /* Universe-like cosmic dot grid for hero */
         .cosmic-dot-grid {
             position: absolute;
@@ -81,14 +89,14 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: 
-                radial-gradient(circle at 25% 25%, rgba(255,255,255,0.8) 1px, transparent 1px),
-                radial-gradient(circle at 75% 75%, rgba(255,255,255,0.6) 0.5px, transparent 0.5px),
-                radial-gradient(circle at 50% 10%, rgba(255,255,255,0.4) 0.8px, transparent 0.8px),
-                radial-gradient(circle at 10% 90%, rgba(255,255,255,0.7) 0.6px, transparent 0.6px),
-                radial-gradient(circle at 90% 30%, rgba(255,255,255,0.5) 1.2px, transparent 1.2px),
-                radial-gradient(circle at 30% 70%, rgba(255,255,255,0.3) 0.4px, transparent 0.4px);
-            background-size: 
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.6) 0.5px, transparent 0.5px),
+                radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.4) 0.8px, transparent 0.8px),
+                radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.7) 0.6px, transparent 0.6px),
+                radial-gradient(circle at 90% 30%, rgba(255, 255, 255, 0.5) 1.2px, transparent 1.2px),
+                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.3) 0.4px, transparent 0.4px);
+            background-size:
                 100px 100px,
                 50px 50px,
                 75px 75px,
@@ -106,16 +114,17 @@
             pointer-events: none;
             animation: cosmic-drift 60s linear infinite;
         }
-        
+
         @keyframes cosmic-drift {
             0% {
                 transform: translate(0, 0);
             }
+
             100% {
                 transform: translate(-100px, -100px);
             }
         }
-        
+
         /* Gradient dot effects - Enhanced visibility on black background */
         .gradient-dot {
             border-radius: 50%;
@@ -125,28 +134,31 @@
             animation: float-glow 4s ease-in-out infinite;
             box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
         }
-        
+
         .gradient-dot-red {
             background: radial-gradient(circle, rgba(239, 68, 68, 1) 0%, rgba(239, 68, 68, 0.9) 30%, rgba(239, 68, 68, 0.4) 70%, transparent 100%);
             box-shadow: 0 0 15px rgba(239, 68, 68, 0.8);
         }
-        
+
         .gradient-dot-white {
             background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.9) 30%, rgba(255, 255, 255, 0.4) 70%, transparent 100%);
             box-shadow: 0 0 12px rgba(255, 255, 255, 0.9);
         }
-        
+
         @keyframes float-glow {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) scale(1);
                 opacity: 0.8;
             }
+
             50% {
                 transform: translateY(-10px) scale(1.2);
                 opacity: 1;
             }
         }
-        
+
         /* Enhanced graphics with better visibility */
         .gradient-orb {
             border-radius: 50%;
@@ -154,88 +166,166 @@
             filter: blur(1px);
             animation: pulse-glow 6s ease-in-out infinite;
         }
-        
+
         /* Dynamic graphics animations */
         @keyframes slide-right {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
         }
-        
+
         @keyframes slide-down {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
         }
-        
+
         .floating-shape {
             animation: float-drift 10s ease-in-out infinite;
         }
-        
+
         @keyframes float-drift {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-20px) rotate(90deg); }
-            50% { transform: translateY(-10px) rotate(180deg); }
-            75% { transform: translateY(-15px) rotate(270deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(180deg);
+            }
+
+            75% {
+                transform: translateY(-15px) rotate(270deg);
+            }
         }
-        
+
         .glowing-orb {
             animation: orb-pulse 8s ease-in-out infinite;
         }
-        
+
         @keyframes orb-pulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.2); }
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(1.2);
+            }
         }
-        
+
         /* Touch-friendly improvements */
-        a, button, .fizzy-button-inner {
-            touch-action: manipulation; /* Faster touch response */
-            -webkit-touch-callout: none; /* Disable callout on long press */
+        a,
+        button,
+        .fizzy-button-inner {
+            touch-action: manipulation;
+            /* Faster touch response */
+            -webkit-touch-callout: none;
+            /* Disable callout on long press */
         }
-        
+
         /* Smooth scrolling improvements */
         * {
-            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            -webkit-overflow-scrolling: touch;
+            /* Smooth scrolling on iOS */
         }
-        
+
         /* ENHANCEMENT: Typography - Tighter tracking for Oswald, more readable body */
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Oswald', sans-serif;
             text-transform: uppercase;
-            letter-spacing: -0.025em; /* Tighter tracking for Oswald */
+            letter-spacing: -0.025em;
+            /* Tighter tracking for Oswald */
         }
-        p, li, span, a {
+
+        p,
+        li,
+        span,
+        a {
             /* ENHANCEMENT: Improved readability with relaxed line height */
             line-height: 1.65;
         }
 
         /* Custom color variables for LIHE palette */
         :root {
-            --lihe-red: #E53935;    /* Bold Red */
-            --lihe-black: #1A1A1A;  /* Deep Black */
-            --lihe-gold: #D4AF37;   /* Accent Gold */
+            --lihe-red: #E53935;
+            /* Bold Red */
+            --lihe-black: #1A1A1A;
+            /* Deep Black */
+            --lihe-gold: #D4AF37;
+            /* Accent Gold */
             --lihe-white: #FFFFFF;
-            --lihe-light-gray: #F5F5F5; /* Light background */
+            --lihe-light-gray: #F5F5F5;
+            /* Light background */
         }
-        /* Applying custom colors via Tailwind's theme extension */
-        .bg-lihe-red { background-color: var(--lihe-red); }
-        .text-lihe-red { color: var(--lihe-red); }
-        .border-lihe-red { border-color: var(--lihe-red); }
-        
-        .bg-lihe-black { background-color: var(--lihe-black); }
-        .text-lihe-black { color: var(--lihe-black); }
-        .border-lihe-black { border-color: var(--lihe-black); }
 
-        .bg-lihe-gold { background-color: var(--lihe-gold); }
-        .text-lihe-gold { color: var(--lihe-gold); }
-        .border-lihe-gold { border-color: var(--lihe-gold); }
-        
-        .bg-lihe-light-gray { background-color: var(--lihe-light-gray); }
-        
+        /* Applying custom colors via Tailwind's theme extension */
+        .bg-lihe-red {
+            background-color: var(--lihe-red);
+        }
+
+        .text-lihe-red {
+            color: var(--lihe-red);
+        }
+
+        .border-lihe-red {
+            border-color: var(--lihe-red);
+        }
+
+        .bg-lihe-black {
+            background-color: var(--lihe-black);
+        }
+
+        .text-lihe-black {
+            color: var(--lihe-black);
+        }
+
+        .border-lihe-black {
+            border-color: var(--lihe-black);
+        }
+
+        .bg-lihe-gold {
+            background-color: var(--lihe-gold);
+        }
+
+        .text-lihe-gold {
+            color: var(--lihe-gold);
+        }
+
+        .border-lihe-gold {
+            border-color: var(--lihe-gold);
+        }
+
+        .bg-lihe-light-gray {
+            background-color: var(--lihe-light-gray);
+        }
+
         /* Smooth scrolling for anchor links */
         html {
             scroll-behavior: smooth;
         }
-        
+
         /* --- NEW: Preloader Styles (Logo Reveal) --- */
         #preloader {
             position: fixed;
@@ -252,14 +342,14 @@
             transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
             will-change: opacity;
         }
-        
+
         #preloader-logo {
             width: 300px;
             height: auto;
             padding: 40px;
             background: rgba(255, 255, 255, 0.95);
             border-radius: 30px;
-            box-shadow: 
+            box-shadow:
                 0 0 60px rgba(255, 255, 255, 0.8),
                 0 0 120px rgba(255, 255, 255, 0.6),
                 0 0 180px rgba(255, 255, 255, 0.4),
@@ -270,41 +360,45 @@
             animation: neon-pulse-fade-in 2s ease-out forwards;
             will-change: transform, opacity, box-shadow;
         }
-        
+
         @keyframes neon-pulse-fade-in {
             0% {
                 opacity: 0;
                 transform: scale(0.6) rotate(-5deg);
-                box-shadow: 
+                box-shadow:
                     0 0 20px rgba(255, 255, 255, 0.4),
                     0 0 40px rgba(255, 255, 255, 0.3);
             }
+
             30% {
                 opacity: 0.8;
                 transform: scale(1.1) rotate(2deg);
-                box-shadow: 
+                box-shadow:
                     0 0 80px rgba(255, 255, 255, 0.9),
                     0 0 160px rgba(255, 255, 255, 0.7),
                     0 0 240px rgba(255, 255, 255, 0.5);
             }
+
             60% {
                 opacity: 1;
                 transform: scale(0.95) rotate(-1deg);
-                box-shadow: 
+                box-shadow:
                     0 0 100px rgba(255, 255, 255, 1),
                     0 0 200px rgba(255, 255, 255, 0.8),
                     0 0 300px rgba(255, 255, 255, 0.6);
             }
+
             100% {
                 opacity: 1;
                 transform: scale(1) rotate(0deg);
-                box-shadow: 
+                box-shadow:
                     0 0 60px rgba(255, 255, 255, 0.8),
                     0 0 120px rgba(255, 255, 255, 0.6),
                     0 0 180px rgba(255, 255, 255, 0.4),
                     inset 0 0 40px rgba(255, 255, 255, 0.3);
             }
         }
+
         /* Spinner (Kept for fallback) */
         .spinner {
             position: absolute;
@@ -316,32 +410,44 @@
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
+
         /* --- End Preloader Styles --- */
 
         /* ENHANCEMENT: Header Scroll Styles (Improved Depth) */
         .header-scrolled {
-            background-color: rgba(26, 26, 26, 0.7) !important; /* lihe-black at 70% opacity */
-            backdrop-filter: blur(12px); /* Increased blur */
-            -webkit-backdrop-filter: blur(12px); /* Safari support */
+            background-color: rgba(26, 26, 26, 0.7) !important;
+            /* lihe-black at 70% opacity */
+            backdrop-filter: blur(12px);
+            /* Increased blur */
+            -webkit-backdrop-filter: blur(12px);
+            /* Safari support */
             /* ENHANCEMENT: More pronounced shadow for depth */
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
         .header-scrolled .nav-link {
             color: white;
         }
+
         .header-scrolled .nav-link:hover {
             color: var(--lihe-red);
         }
+
         .header-scrolled .logo-text {
             color: white;
         }
+
         .header-scrolled .logo-icon {
             background-color: var(--lihe-red);
             color: var(--lihe-white);
         }
+
         .header-scrolled #mobile-menu-button {
             color: white;
         }
@@ -350,24 +456,44 @@
         .accreditation-item {
             transition: all 0.3s ease;
         }
+
         .accreditation-item .group:hover img {
             filter: grayscale(0) brightness(1.1);
             transform: scale(1.05);
         }
 
         @keyframes pulse-green {
-            0%, 100% {
+
+            0%,
+            100% {
                 background-color: rgb(220, 252, 231);
                 border-color: rgb(34, 197, 94);
             }
+
             50% {
                 background-color: rgb(187, 247, 208);
                 border-color: rgb(22, 163, 74);
             }
         }
-        .verified-badge { animation: pulse-green 2s infinite; }
-        .confidence-meter { background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%); height: 4px; border-radius: 2px; overflow: hidden; }
-        .confidence-indicator { height: 100%; background: white; border-radius: 2px; transition: width 0.5s ease; }
+
+        .verified-badge {
+            animation: pulse-green 2s infinite;
+        }
+
+        .confidence-meter {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .confidence-indicator {
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
         .accreditation-item img {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             width: 100%;
@@ -376,9 +502,19 @@
         }
 
         /* Custom scrollbar for details panel */
-        #accreditation-details::-webkit-scrollbar { width: 6px; }
-        #accreditation-details::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 3px; }
-        #accreditation-details::-webkit-scrollbar-thumb { background: var(--lihe-red); border-radius: 3px; }
+        #accreditation-details::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #accreditation-details::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        #accreditation-details::-webkit-scrollbar-thumb {
+            background: var(--lihe-red);
+            border-radius: 3px;
+        }
 
         /* Responsive Grid for Accreditation Images */
         .accreditation-grid {
@@ -388,7 +524,7 @@
             justify-items: center;
             align-items: start;
         }
-        
+
         @media (min-width: 1024px) {
             .accreditation-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -396,41 +532,46 @@
                 margin: 0 auto;
             }
         }
-        
+
         @media (max-width: 768px) {
             .accreditation-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
                 padding: 0 1rem;
             }
+
             .accreditation-item {
                 width: 100%;
                 max-width: 250px;
             }
         }
-        
+
         @media (max-width: 480px) {
             .accreditation-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1rem;
                 padding: 0 0.5rem;
             }
+
             .accreditation-item img {
                 height: 80px;
             }
+
             .accreditation-item h3 {
                 font-size: 0.75rem;
             }
+
             .accreditation-item p {
                 font-size: 0.6rem;
             }
         }
-        
+
         @media (max-width: 320px) {
             .accreditation-grid {
                 grid-template-columns: 1fr;
                 gap: 1rem;
             }
+
             .accreditation-item {
                 max-width: 200px;
                 margin: 0 auto;
@@ -448,16 +589,43 @@
             /* ENHANCEMENT: GPU Optimization */
             will-change: transform, opacity;
         }
-        .animate-on-scroll { transform: translateY(50px); }
-        .animate-slide-left { transform: translateX(-50px); }
-        .animate-slide-right { transform: translateX(50px); }
-        .animate-scale-up { transform: scale(0.8); }
+
+        .animate-on-scroll {
+            transform: translateY(50px);
+        }
+
+        .animate-slide-left {
+            transform: translateX(-50px);
+        }
+
+        .animate-slide-right {
+            transform: translateX(50px);
+        }
+
+        .animate-scale-up {
+            transform: scale(0.8);
+        }
 
         /* Scroll Reveal Animations (Triggered State) */
-        .animate-on-scroll.animate-in { opacity: 1; transform: translateY(0); }
-        .animate-slide-left.animate-in { opacity: 1; transform: translateX(0); }
-        .animate-slide-right.animate-in { opacity: 1; transform: translateX(0); }
-        .animate-scale-up.animate-in { opacity: 1; transform: scale(1); }
+        .animate-on-scroll.animate-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-slide-left.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-slide-right.animate-in {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-scale-up.animate-in {
+            opacity: 1;
+            transform: scale(1);
+        }
 
         /* Image Carousel Styles */
         .image-carousel {
@@ -465,16 +633,20 @@
             overflow: hidden;
             background: #f3f4f6;
         }
+
         .carousel-image {
             transition: opacity 1s ease-in-out;
             opacity: 0;
             z-index: 0;
-            will-change: opacity; /* GPU Optimization */
+            will-change: opacity;
+            /* GPU Optimization */
         }
+
         .carousel-image.active {
             opacity: 1 !important;
             z-index: 1;
         }
+
         .carousel-indicator.active {
             opacity: 1 !important;
             transform: scale(1.2);
@@ -485,23 +657,33 @@
             position: relative;
             display: inline-block;
         }
-        .fizzy-input { display: none; }
-        .fizzy-input:checked + .fizzy-label .fizzy-button-inner {
+
+        .fizzy-input {
+            display: none;
+        }
+
+        .fizzy-input:checked+.fizzy-label .fizzy-button-inner {
             background: transparent;
             transform: rotate(90deg);
             width: 100px;
             border-radius: 100px;
-            box-shadow: 0px 0px 0px 440px rgba(0,0,0,0);
+            box-shadow: 0px 0px 0px 440px rgba(0, 0, 0, 0);
             animation: finalbox .4s 4.42s cubic-bezier(0.39, 2.01, 0.27, 0.75) forwards;
         }
-        .fizzy-input:checked + .fizzy-label .fizzy-button-inner .fizzy-text { opacity: 0; top: 20px; }
-        .fizzy-input:checked + .fizzy-label .fizzy-icon {
+
+        .fizzy-input:checked+.fizzy-label .fizzy-button-inner .fizzy-text {
+            opacity: 0;
+            top: 20px;
+        }
+
+        .fizzy-input:checked+.fizzy-label .fizzy-icon {
             left: 14px;
             opacity: 1;
             top: 11px;
             animation: down 1s .25s infinite, final .2s 4s forwards;
         }
-        .fizzy-input:checked + .fizzy-label .fizzy-tick {
+
+        .fizzy-input:checked+.fizzy-label .fizzy-tick {
             position: absolute;
             left: 2px;
             right: 0;
@@ -512,10 +694,12 @@
             font-size: 22px;
             animation: tick .3s 4.7s forwards;
         }
-        .fizzy-input:checked + .fizzy-label .fizzy-button-spots {
+
+        .fizzy-input:checked+.fizzy-label .fizzy-button-spots {
             opacity: 1;
             animation: spew 1s .3s forwards, rotate 4s .25s linear infinite, final .2s 4s forwards;
         }
+
         .fizzy-tick {
             position: absolute;
             left: -40px;
@@ -525,6 +709,7 @@
             font-size: 22px;
             opacity: 0;
         }
+
         .fizzy-button-inner {
             border-radius: 8px;
             position: relative;
@@ -549,6 +734,7 @@
             overflow: hidden;
             position: relative;
         }
+
         @media (max-width: 768px) {
             .fizzy-button-inner {
                 min-width: 180px;
@@ -557,9 +743,17 @@
                 padding: 0 25px;
                 gap: 10px;
             }
-            .fizzy-text { font-size: 14px; letter-spacing: 0.5px; }
-            .fizzy-icon { font-size: 20px; }
+
+            .fizzy-text {
+                font-size: 14px;
+                letter-spacing: 0.5px;
+            }
+
+            .fizzy-icon {
+                font-size: 20px;
+            }
         }
+
         @media (max-width: 480px) {
             .fizzy-button-inner {
                 min-width: 160px;
@@ -569,10 +763,22 @@
                 gap: 8px;
                 border: 2px solid #FFFFFF;
             }
-            .fizzy-text { font-size: 13px; letter-spacing: 0.25px; }
-            .fizzy-icon { font-size: 18px; }
-            .fizzy-button-spots { width: 10px; height: 10px; }
+
+            .fizzy-text {
+                font-size: 13px;
+                letter-spacing: 0.25px;
+            }
+
+            .fizzy-icon {
+                font-size: 18px;
+            }
+
+            .fizzy-button-spots {
+                width: 10px;
+                height: 10px;
+            }
         }
+
         .fizzy-button-inner::before {
             content: '';
             position: absolute;
@@ -584,7 +790,11 @@
             transform: translateX(-100%);
             transition: transform 0.6s ease;
         }
-        .fizzy-button-inner:hover::before { transform: translateX(100%); }
+
+        .fizzy-button-inner:hover::before {
+            transform: translateX(100%);
+        }
+
         .fizzy-text {
             position: relative;
             opacity: 1;
@@ -594,6 +804,7 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+
         .fizzy-icon {
             position: relative;
             color: #FF0000;
@@ -602,6 +813,7 @@
             transition: left .3s 0s, top .3s 0s, opacity .3s 0s, transform .4s ease;
             z-index: 2;
         }
+
         .fizzy-button-inner:hover {
             color: #1a202c;
             background: white;
@@ -610,16 +822,19 @@
             animation: button-magic 3s ease-in-out infinite;
             border-color: #FF0000;
         }
+
         .fizzy-button-inner:hover .fizzy-text {
             transform: translateX(12px);
             text-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
         }
+
         .fizzy-button-inner:hover .fizzy-icon {
             opacity: 1;
             transform: scale(1.3) rotate(360deg);
             transition: opacity .3s .1s, transform .6s .1s;
             filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.8));
         }
+
         .fizzy-button-spots {
             position: absolute;
             border-radius: 100px;
@@ -634,53 +849,220 @@
             box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 40px rgba(0, 0, 0, 0.6);
             animation: sparkle-pulse 2s ease-in-out infinite;
         }
+
         .fizzy-button-inner:hover .fizzy-button-spots {
             animation: fizzy-spectacular 2s ease-out infinite;
         }
-        .fizzy-button-spots:nth-child(6) { top: 20%; left: 20%; animation-delay: 0s; }
-        .fizzy-button-spots:nth-child(7) { top: 20%; left: 80%; animation-delay: 0.3s; }
-        .fizzy-button-spots:nth-child(8) { top: 80%; left: 20%; animation-delay: 0.6s; }
-        .fizzy-button-spots:nth-child(9) { top: 80%; left: 80%; animation-delay: 0.9s; }
-        .fizzy-button-spots:nth-child(10) { top: 50%; left: 10%; animation-delay: 1.2s; }
-        .fizzy-button-spots:nth-child(11) { top: 50%; left: 90%; animation-delay: 1.5s; }
-        .fizzy-button-spots:nth-child(12) { top: 10%; left: 50%; animation-delay: 1.8s; }
-        .fizzy-button-spots:nth-child(13) { top: 90%; left: 50%; animation-delay: 2.1s; }
+
+        .fizzy-button-spots:nth-child(6) {
+            top: 20%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .fizzy-button-spots:nth-child(7) {
+            top: 20%;
+            left: 80%;
+            animation-delay: 0.3s;
+        }
+
+        .fizzy-button-spots:nth-child(8) {
+            top: 80%;
+            left: 20%;
+            animation-delay: 0.6s;
+        }
+
+        .fizzy-button-spots:nth-child(9) {
+            top: 80%;
+            left: 80%;
+            animation-delay: 0.9s;
+        }
+
+        .fizzy-button-spots:nth-child(10) {
+            top: 50%;
+            left: 10%;
+            animation-delay: 1.2s;
+        }
+
+        .fizzy-button-spots:nth-child(11) {
+            top: 50%;
+            left: 90%;
+            animation-delay: 1.5s;
+        }
+
+        .fizzy-button-spots:nth-child(12) {
+            top: 10%;
+            left: 50%;
+            animation-delay: 1.8s;
+        }
+
+        .fizzy-button-spots:nth-child(13) {
+            top: 90%;
+            left: 50%;
+            animation-delay: 2.1s;
+        }
+
         @keyframes sparkle-pulse {
-            0%, 100% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
-            50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 0.8; }
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.5) rotate(180deg);
+                opacity: 0.8;
+            }
         }
+
         @keyframes fizzy-spectacular {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(0deg); box-shadow: 0 0 0px rgba(255, 0, 0, 0); }
-            25% { opacity: 1; transform: translate(-50%, -50%) scale(2) rotate(90deg); box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 60px rgba(0, 0, 0, 0.7); }
-            50% { opacity: 0.9; transform: translate(-70%, -70%) scale(3) rotate(180deg); box-shadow: 0 0 40px rgba(128, 0, 0, 0.8), 0 0 80px rgba(255, 0, 0, 0.6); }
-            75% { opacity: 0.7; transform: translate(-90%, -90%) scale(2.5) rotate(270deg); box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 100px rgba(255, 0, 0, 0.5); }
-            100% { opacity: 0; transform: translate(-120%, -120%) scale(0) rotate(360deg); box-shadow: 0 0 0px rgba(255, 0, 0, 0); }
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0) rotate(0deg);
+                box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+            }
+
+            25% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(2) rotate(90deg);
+                box-shadow: 0 0 30px rgba(255, 0, 0, 0.9), 0 0 60px rgba(0, 0, 0, 0.7);
+            }
+
+            50% {
+                opacity: 0.9;
+                transform: translate(-70%, -70%) scale(3) rotate(180deg);
+                box-shadow: 0 0 40px rgba(128, 0, 0, 0.8), 0 0 80px rgba(255, 0, 0, 0.6);
+            }
+
+            75% {
+                opacity: 0.7;
+                transform: translate(-90%, -90%) scale(2.5) rotate(270deg);
+                box-shadow: 0 0 50px rgba(0, 0, 0, 0.9), 0 0 100px rgba(255, 0, 0, 0.5);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(-120%, -120%) scale(0) rotate(360deg);
+                box-shadow: 0 0 0px rgba(255, 0, 0, 0);
+            }
         }
+
         @keyframes button-magic {
-            0% { box-shadow: 0px 0px 0px rgba(255, 0, 0, 0); transform: translateY(0) scale(1); }
-            50% { box-shadow: 0px 20px 40px rgba(255, 0, 0, 0.4), 0px 0px 60px rgba(0, 0, 0, 0.3); transform: translateY(-8px) scale(1.05); }
-            100% { box-shadow: 0px 0px 0px rgba(255, 0, 0, 0); transform: translateY(0) scale(1); }
+            0% {
+                box-shadow: 0px 0px 0px rgba(255, 0, 0, 0);
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                box-shadow: 0px 20px 40px rgba(255, 0, 0, 0.4), 0px 0px 60px rgba(0, 0, 0, 0.3);
+                transform: translateY(-8px) scale(1.05);
+            }
+
+            100% {
+                box-shadow: 0px 0px 0px rgba(255, 0, 0, 0);
+                transform: translateY(0) scale(1);
+            }
         }
+
         @keyframes down {
-            0% { transform: translateX(0px); }
-            50% { transform: translateX(10px); }
-            100% { transform: translateX(0px); }
+            0% {
+                transform: translateX(0px);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+
+            100% {
+                transform: translateX(0px);
+            }
         }
-        @keyframes spew { from { opacity: 0; } to { opacity: 0.8; } }
-        @keyframes rotate { from { opacity: 0.8; transform: rotate(0deg); } to { transform: rotate(360deg); opacity: 0.8; } }
-        @keyframes final { from { opacity: 1; } to { opacity: 0; } }
-        @keyframes finalbox { from { } to { width: 50px; } }
-        @keyframes tick { from { transform: scale(0) rotate(-90deg); } to { transform: scale(1) rotate(-90deg); } }
+
+        @keyframes spew {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                opacity: 0.8;
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes final {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+        @keyframes finalbox {
+            from {}
+
+            to {
+                width: 50px;
+            }
+        }
+
+        @keyframes tick {
+            from {
+                transform: scale(0) rotate(-90deg);
+            }
+
+            to {
+                transform: scale(1) rotate(-90deg);
+            }
+        }
+
         @keyframes ambient-glow {
-            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.3)); }
-            50% { filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6)); }
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.6));
+            }
         }
+
         @keyframes glow-pulse {
-            0%, 100% { opacity: 0.3; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+
+            0%,
+            100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
         }
-        .fizzy-button-container { filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.2)); }
-        .fizzy-button-container:hover { filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.5)); }
+
+        .fizzy-button-container {
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.2));
+        }
+
+        .fizzy-button-container:hover {
+            filter: drop-shadow(0 0 25px rgba(255, 0, 0, 0.5));
+        }
+
         /* (Duplicate Fizzy styles removed for brevity) */
         .carousel-indicator:hover {
             opacity: 0.8 !important;
@@ -692,17 +1074,22 @@
             opacity: 0;
             transform: translateY(-50px) scale(0.8);
             transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            will-change: transform, opacity; /* GPU Optimization */
+            will-change: transform, opacity;
+            /* GPU Optimization */
         }
+
         .card-drop.animate-in {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
+
         .card-hover {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-            will-change: transform, box-shadow; /* GPU Optimization */
+            will-change: transform, box-shadow;
+            /* GPU Optimization */
         }
+
         /* ENHANCEMENT: More pronounced 3D tilt and shadow for luxury feel */
         .card-hover:hover {
             transform: perspective(1000px) rotateX(4deg) rotateY(4deg) translateY(-12px);
@@ -710,38 +1097,81 @@
         }
 
         /* Floating Animation */
-        .float-animation { animation: float 6s ease-in-out infinite; }
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
         }
 
         /* Stagger Animation for Lists */
-        .stagger-animation > * {
+        .stagger-animation>* {
             opacity: 0;
             transform: translateY(20px);
             animation: stagger-in 0.6s ease-out forwards;
             will-change: transform, opacity;
         }
-        .stagger-animation.animate-in > *:nth-child(1) { animation-delay: 0.1s; }
-        .stagger-animation.animate-in > *:nth-child(2) { animation-delay: 0.2s; }
-        .stagger-animation.animate-in > *:nth-child(3) { animation-delay: 0.3s; }
-        .stagger-animation.animate-in > *:nth-child(4) { animation-delay: 0.4s; }
-        .stagger-animation.animate-in > *:nth-child(5) { animation-delay: 0.5s; }
-        .stagger-animation.animate-in > *:nth-child(6) { animation-delay: 0.6s; }
+
+        .stagger-animation.animate-in>*:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-animation.animate-in>*:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-animation.animate-in>*:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-animation.animate-in>*:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-animation.animate-in>*:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .stagger-animation.animate-in>*:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
         @keyframes stagger-in {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* Enhanced Pulse Animation */
-        .pulse-glow { animation: pulse-glow 2s infinite; }
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
         @keyframes pulse-glow {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(220, 38, 38, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); }
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+            }
         }
 
         /* Hero Light-up Animation */
@@ -751,10 +1181,28 @@
             animation: lightUpFromBelow 1.5s ease-out forwards;
             will-change: transform, opacity, filter;
         }
+
         @keyframes lightUpFromBelow {
-            0% { opacity: 0; transform: translateY(50px); filter: brightness(0.3); text-shadow: 0 0 0 rgba(255, 255, 255, 0); }
-            50% { opacity: 0.7; transform: translateY(25px); filter: brightness(0.8); text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-            100% { opacity: 1; transform: translateY(0); filter: brightness(1); text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+                filter: brightness(0.3);
+                text-shadow: 0 0 0 rgba(255, 255, 255, 0);
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: translateY(25px);
+                filter: brightness(0.8);
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: brightness(1);
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
         }
 
         /* Glow Text Animation */
@@ -763,9 +1211,17 @@
             text-shadow: 0 0 10px rgba(255, 80, 80, 0.8), 0 0 20px rgba(229, 57, 53, 0.6), 0 0 40px rgba(229, 57, 53, 0.4);
             animation: glow-pulse-text 3s ease-in-out infinite;
         }
+
         @keyframes glow-pulse-text {
-            0%, 100% { text-shadow: 0 0 10px rgba(255, 80, 80, 0.8), 0 0 20px rgba(229, 57, 53, 0.6), 0 0 40px rgba(229, 57, 53, 0.4); }
-            50% { text-shadow: 0 0 20px rgba(255, 80, 80, 1), 0 0 40px rgba(229, 57, 53, 0.8), 0 0 80px rgba(229, 57, 53, 0.6); }
+
+            0%,
+            100% {
+                text-shadow: 0 0 10px rgba(255, 80, 80, 0.8), 0 0 20px rgba(229, 57, 53, 0.6), 0 0 40px rgba(229, 57, 53, 0.4);
+            }
+
+            50% {
+                text-shadow: 0 0 20px rgba(255, 80, 80, 1), 0 0 40px rgba(229, 57, 53, 0.8), 0 0 80px rgba(229, 57, 53, 0.6);
+            }
         }
 
         /* ENHANCED: Button Hover Effects */
@@ -774,25 +1230,36 @@
             transition: all 0.3s ease;
             will-change: transform, box-shadow;
         }
+
         .glow-button:hover {
             box-shadow: 0 0 30px rgba(220, 38, 38, 0.8), 0 0 60px rgba(220, 38, 38, 0.4);
-            transform: scale(1.05); /* Added scale */
+            transform: scale(1.05);
+            /* Added scale */
         }
+
         .glow-button-outline {
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
             transition: all 0.3s ease;
             will-change: transform, box-shadow;
         }
+
         .glow-button-outline:hover {
             box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.3);
-            transform: scale(1.05); /* Added scale */
+            transform: scale(1.05);
+            /* Added scale */
         }
 
         /* NEW: Hero Background Zoom */
         @keyframes bg-zoom {
-            from { background-size: 110% auto; }
-            to { background-size: 100% auto; }
+            from {
+                background-size: 110% auto;
+            }
+
+            to {
+                background-size: 100% auto;
+            }
         }
+
         .hero-bg-zoom {
             animation: bg-zoom 10s ease-out forwards;
             background-position: center center;
@@ -806,13 +1273,14 @@
             /* Using a white/gold/red gradient to match the brand and show on dark bg */
             background: linear-gradient(45deg, #FFFFFF, #D4AF37, #E53935, #FFFFFF);
             opacity: 0;
-            width: 8px; /* A bit smaller for subtlety */
+            width: 8px;
+            /* A bit smaller for subtlety */
             height: 8px;
             pointer-events: none;
             will-change: transform, opacity;
             transform: translateZ(0);
             /* Using the existing sparkle-pulse animation from the button */
-            animation: sparkle-pulse 3s ease-in-out infinite; 
+            animation: sparkle-pulse 3s ease-in-out infinite;
         }
 
         /* --- NEW: Events Section Styles --- */
@@ -820,12 +1288,15 @@
             /* ENHANCEMENT: Add luxury feel with shadow and hover */
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             will-change: transform, box-shadow;
-            cursor: pointer; /* NEW: Show it's clickable */
+            cursor: pointer;
+            /* NEW: Show it's clickable */
         }
+
         .event-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
+
         .event-card-date {
             background-color: var(--lihe-red);
             color: var(--lihe-white);
@@ -840,17 +1311,20 @@
             line-height: 1.1;
             box-shadow: 0 4px 10px rgba(229, 57, 53, 0.4);
         }
+
         .event-card-date-month {
             font-size: 0.875rem;
             font-weight: 700;
             text-transform: uppercase;
         }
+
         .event-card-date-day {
             font-size: 1.875rem;
             font-weight: 700;
             font-family: 'Oswald', sans-serif;
             letter-spacing: -0.025em;
         }
+
         /* --- End Events Section Styles --- */
 
         /* --- NEW: Welcome Features Icon Styles --- */
@@ -866,6 +1340,7 @@
             color: var(--lihe-red);
             transition: all 0.3s ease;
         }
+
         .feature-icon-box:hover {
             transform: scale(1.1) rotate(10deg);
             background-color: var(--lihe-red);
@@ -875,8 +1350,10 @@
 
         /* --- NEW: Modal Styles --- */
         .modal-open {
-            overflow: hidden; /* Prevent background scroll */
+            overflow: hidden;
+            /* Prevent background scroll */
         }
+
         .glass-modal {
             /* ENHANCEMENT: More blur, slightly more opaque */
             background-color: rgba(255, 255, 255, 0.8);
@@ -885,150 +1362,332 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
         }
+
         /* --- End Modal Styles --- */
 
 
         /* Comprehensive Responsive Design */
         @media (max-width: 1024px) {
+
             /* Hero responsive */
-            .hero-light-up h1 { font-size: 3.5rem; }
-            .hero-light-up p { font-size: 1.1rem; }
-            .container { padding-left: 1rem; padding-right: 1rem; }
-            .text-4xl { font-size: 2.25rem; }
-            .text-5xl { font-size: 2.75rem; }
-            
+            .hero-light-up h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero-light-up p {
+                font-size: 1.1rem;
+            }
+
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            .text-4xl {
+                font-size: 2.25rem;
+            }
+
+            .text-5xl {
+                font-size: 2.75rem;
+            }
+
             /* 3D container adjustments */
-            #hero-3d-container { width: 40%; }
-            
+            #hero-3d-container {
+                width: 40%;
+            }
+
             /* Button spacing */
-            .fizzy-button-container { margin: 0.5rem 0; }
+            .fizzy-button-container {
+                margin: 0.5rem 0;
+            }
         }
-        
+
         @media (max-width: 768px) {
+
             /* Hero responsive for tablets */
-            .hero-light-up h1 { font-size: 2.5rem !important; line-height: 1.1 !important; }
-            .hero-light-up p { font-size: 1rem !important; margin-top: 1rem !important; }
-            .absolute.top-60, .absolute.bottom-60 { display: none; }
-            .hero-light-up .flex { flex-direction: column; gap: 1rem; }
-            .hero-light-up a { text-align: center; padding: 0.875rem 2rem; font-size: 1rem; }
-            
+            .hero-light-up h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.1 !important;
+            }
+
+            .hero-light-up p {
+                font-size: 1rem !important;
+                margin-top: 1rem !important;
+            }
+
+            .absolute.top-60,
+            .absolute.bottom-60 {
+                display: none;
+            }
+
+            .hero-light-up .flex {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-light-up a {
+                text-align: center;
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+            }
+
             /* Hide 3D container on tablets */
-            #hero-3d-container { display: none !important; }
-            
+            #hero-3d-container {
+                display: none !important;
+            }
+
             /* Hero content takes full width */
-            .hero-light-up { max-width: 100%; text-align: center; }
-            
+            .hero-light-up {
+                max-width: 100%;
+                text-align: center;
+            }
+
             /* General responsive */
-            .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
-            .py-28 { padding-top: 4rem; padding-bottom: 4rem; }
-            .text-4xl { font-size: 1.875rem; }
-            .text-5xl { font-size: 2.25rem; }
-            
+            .py-20 {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+
+            .py-28 {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            .text-4xl {
+                font-size: 1.875rem;
+            }
+
+            .text-5xl {
+                font-size: 2.25rem;
+            }
+
             /* Grid responsive */
-            .grid { gap: 1.5rem; }
-            .md\:grid-cols-2 { grid-template-columns: 1fr; }
-            .md\:grid-cols-3 { grid-template-columns: 1fr; }
-            .md\:grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
-            
+            .grid {
+                gap: 1.5rem;
+            }
+
+            .md\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .md\:grid-cols-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .md\:grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             /* Image carousel responsive */
-            .image-carousel { height: 350px; }
-            
+            .image-carousel {
+                height: 350px;
+            }
+
             /* Mobile navigation */
-            .nav-link { padding: 1rem; font-size: 1.1rem; }
+            .nav-link {
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
         }
-        
+
         @media (max-width: 480px) {
+
             /* Small screen hero */
-            .hero-light-up h1 { font-size: 2rem !important; }
-            .hero-light-up p { font-size: 0.9rem !important; }
-            .absolute.w-20, .absolute.w-16 { width: 0.75rem !important; height: 0.75rem !important; }
-            .hero-light-up a { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
-            
+            .hero-light-up h1 {
+                font-size: 2rem !important;
+            }
+
+            .hero-light-up p {
+                font-size: 0.9rem !important;
+            }
+
+            .absolute.w-20,
+            .absolute.w-16 {
+                width: 0.75rem !important;
+                height: 0.75rem !important;
+            }
+
+            .hero-light-up a {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
             /* Very small screens */
-            .px-4 { padding-left: 0.75rem; padding-right: 0.75rem; }
-            .text-lg { font-size: 1rem; }
-            .text-xl { font-size: 1.125rem; }
-            .md\:grid-cols-4 { grid-template-columns: 1fr; }
-            
+            .px-4 {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+
+            .text-lg {
+                font-size: 1rem;
+            }
+
+            .text-xl {
+                font-size: 1.125rem;
+            }
+
+            .md\:grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+
             /* Image carousel responsive */
-            .image-carousel { height: 300px; }
-            
+            .image-carousel {
+                height: 300px;
+            }
+
             /* Button container spacing */
-            .fizzy-button-container { width: 100%; margin: 0.5rem 0; }
-            
+            .fizzy-button-container {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
             /* Section padding */
-            .py-20 { padding-top: 2rem; padding-bottom: 2rem; }
-            .py-28 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-            
+            .py-20 {
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+            }
+
+            .py-28 {
+                padding-top: 2.5rem;
+                padding-bottom: 2.5rem;
+            }
+
             /* Text responsive */
-            .text-3xl { font-size: 1.5rem; }
-            .text-2xl { font-size: 1.25rem; }
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+
+            .text-2xl {
+                font-size: 1.25rem;
+            }
         }
 
         /* Additional Responsive Enhancements */
         @media (max-width: 640px) {
+
             /* Extra small screens */
-            .container { padding-left: 0.5rem; padding-right: 0.5rem; }
-            
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+
             /* Section spacing */
-            section { padding-left: 1rem; padding-right: 1rem; }
-            
+            section {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
             /* Card spacing */
-            .grid { gap: 1rem; }
-            
+            .grid {
+                gap: 1rem;
+            }
+
             /* Text responsive */
-            .text-6xl { font-size: 2rem; }
-            .text-5xl { font-size: 1.75rem; }
-            .text-4xl { font-size: 1.5rem; }
-            .text-3xl { font-size: 1.25rem; }
-            
+            .text-6xl {
+                font-size: 2rem;
+            }
+
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+
+            .text-4xl {
+                font-size: 1.5rem;
+            }
+
+            .text-3xl {
+                font-size: 1.25rem;
+            }
+
             /* Hero adjustments */
-            .hero-light-up h1 { font-size: 1.875rem !important; margin-bottom: 1rem; }
-            .hero-light-up p { font-size: 0.875rem !important; line-height: 1.4; }
-            
+            .hero-light-up h1 {
+                font-size: 1.875rem !important;
+                margin-bottom: 1rem;
+            }
+
+            .hero-light-up p {
+                font-size: 0.875rem !important;
+                line-height: 1.4;
+            }
+
             /* Button adjustments */
-            .fizzy-button-container { margin: 0.25rem 0; }
-            
+            .fizzy-button-container {
+                margin: 0.25rem 0;
+            }
+
             /* Carousel responsive */
-            .image-carousel { height: 250px !important; }
+            .image-carousel {
+                height: 250px !important;
+            }
         }
-        
+
         @media (min-width: 1280px) {
+
             /* Large desktop screens */
-            .container { max-width: 1200px; }
-            
+            .container {
+                max-width: 1200px;
+            }
+
             /* Hero enhancements */
-            .hero-light-up h1 { font-size: 5rem; }
-            .hero-light-up p { font-size: 1.25rem; }
-            
+            .hero-light-up h1 {
+                font-size: 5rem;
+            }
+
+            .hero-light-up p {
+                font-size: 1.25rem;
+            }
+
             /* Grid enhancements */
-            .grid { gap: 2rem; }
+            .grid {
+                gap: 2rem;
+            }
         }
-        
+
         /* Landscape phone adjustments */
         @media (max-height: 500px) and (orientation: landscape) {
-            .h-screen { height: auto; min-height: 100vh; }
-            .hero-light-up h1 { font-size: 2rem !important; }
-            .hero-light-up p { font-size: 0.9rem !important; }
-            .fizzy-button-inner { height: 45px; font-size: 13px; }
-            #hero-3d-container { display: none; }
+            .h-screen {
+                height: auto;
+                min-height: 100vh;
+            }
+
+            .hero-light-up h1 {
+                font-size: 2rem !important;
+            }
+
+            .hero-light-up p {
+                font-size: 0.9rem !important;
+            }
+
+            .fizzy-button-inner {
+                height: 45px;
+                font-size: 13px;
+            }
+
+            #hero-3d-container {
+                display: none;
+            }
         }
-        
+
         /* Performance optimizations */
-        .fizzy-button-spots, .carousel-image {
+        .fizzy-button-spots,
+        .carousel-image {
             will-change: transform, opacity;
-            transform: translateZ(0); /* Hardware acceleration */
+            transform: translateZ(0);
+            /* Hardware acceleration */
         }
-        
+
         /* Accessibility improvements */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
+
+            *,
+            *::before,
+            *::after {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
-        
+
         /* Focus improvements */
         .fizzy-button-inner:focus,
         a:focus,
@@ -1036,9 +1695,9 @@
             outline: 2px solid #FF0000;
             outline-offset: 2px;
         }
-
     </style>
 </head>
+
 <body class="bg-lihe-white text-lihe-black">
 
     <!-- NEW: Preloader (Logo Reveal) -->
@@ -1055,34 +1714,47 @@
                 <a href="#" class="flex-shrink-0 flex items-center gap-2">
                     <!-- ENHANCEMENT: Improved logo glass effect on base header -->
                     <div class="bg-white/80 backdrop-blur-sm rounded-lg p-2 shadow-lg border border-white/20">
-                        <img src="logo/logo.png" alt="LIHE Logo" class="h-10 w-auto transition-all duration-300 logo-image">
+                        <img src="logo/logo.png" alt="LIHE Logo"
+                            class="h-10 w-auto transition-all duration-300 logo-image">
                     </div>
                 </a>
-                
+
                 <!-- Desktop Navigation -->
                 <!-- ENHANCEMENT: Added text-base for slightly larger, more readable nav links -->
                 <div class="hidden md:flex md:items-center md:space-x-8">
-                    <a href="#" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Home</a>
-                    <a href="#about" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">About</a>
-                    <a href="#courses" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Courses</a>
-                    <a href="#events" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Events</a>
-                    <a href="#admissions" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Admissions</a>
-                    <a href="#international" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">International</a>
-                    <a href="#contact" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Contact</a>
+                    <a href="#"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Home</a>
+                    <a href="#about"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">About</a>
+                    <a href="#courses"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Courses</a>
+                    <a href="#events"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Events</a>
+                    <a href="#admissions"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Admissions</a>
+                    <a href="#international"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">International</a>
+                    <a href="#contact"
+                        class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link text-base">Contact</a>
                 </div>
-                
+
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden flex items-center">
                     <div class="fizzy-button-container">
                         <input type="checkbox" id="fizzy-mobile-menu" class="fizzy-input">
                         <label for="fizzy-mobile-menu" class="fizzy-label" id="mobile-menu-button">
                             <!-- ENHANCEMENT: Adjusted button style for non-scrolled header -->
-                            <div class="fizzy-button-inner w-12 h-12 min-w-12 border-lihe-black text-lihe-black hover:bg-lihe-black hover:text-white p-0">
-                                <svg id="menu-icon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            <div
+                                class="fizzy-button-inner w-12 h-12 min-w-12 border-lihe-black text-lihe-black hover:bg-lihe-black hover:text-white p-0">
+                                <svg id="menu-icon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16m-7 6h7" />
                                 </svg>
-                                <svg id="close-icon" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                <svg id="close-icon" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
                                 </svg>
                                 <div class="fizzy-button-spots"></div>
                                 <div class="fizzy-button-spots"></div>
@@ -1106,13 +1778,20 @@
         <!-- Mobile Menu (Dropdown) -->
         <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200 shadow-lg">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Home</a>
-                <a href="#about" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">About</a>
-                <a href="#courses" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Courses</a>
-                <a href="#events" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Events</a>
-                <a href="#admissions" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Admissions</a>
-                <a href="#international" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">International</a>
-                <a href="#contact" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium transition-all duration-200">Contact</a>
+                <a href="#"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Home</a>
+                <a href="#about"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">About</a>
+                <a href="#courses"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Courses</a>
+                <a href="#events"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Events</a>
+                <a href="#admissions"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">Admissions</a>
+                <a href="#international"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium border-b border-gray-100 transition-all duration-200">International</a>
+                <a href="#contact"
+                    class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-4 py-3 text-base font-medium transition-all duration-200">Contact</a>
             </div>
         </div>
     </header>
@@ -1125,38 +1804,57 @@
             <video autoplay muted loop class="absolute inset-0 w-full h-full object-cover z-0">
                 <source src="bck3.mp4" type="video/mp4">
             </video>
-            
-            <!-- Cosmic Universe Dot Grid -->
-            <div class="cosmic-dot-grid"></div>
-            
+
             <!-- Animated Graphics Overlay with Bright White & Red Effects -->
             <div class="absolute inset-0">
                 <!-- Bright White & Red Floating Dots -->
-                <div class="gradient-dot gradient-dot-white w-4 h-4" style="top: 15%; left: 8%; animation-delay: 0s;"></div>
-                <div class="gradient-dot gradient-dot-red w-3 h-3" style="top: 25%; right: 15%; animation-delay: 0.8s;"></div>
-                <div class="gradient-dot gradient-dot-white w-5 h-5" style="top: 35%; left: 70%; animation-delay: 1.2s;"></div>
-                <div class="gradient-dot gradient-dot-red w-3 h-3" style="top: 45%; left: 20%; animation-delay: 1.8s;"></div>
-                <div class="gradient-dot gradient-dot-white w-4 h-4" style="top: 60%; right: 25%; animation-delay: 2.2s;"></div>
-                <div class="gradient-dot gradient-dot-red w-3 h-3" style="top: 70%; left: 15%; animation-delay: 2.8s;"></div>
-                <div class="gradient-dot gradient-dot-white w-4 h-4" style="top: 80%; right: 40%; animation-delay: 3.2s;"></div>
-                <div class="gradient-dot gradient-dot-red w-3 h-3" style="bottom: 15%; left: 60%; animation-delay: 3.8s;"></div>
-                
+                <div class="gradient-dot gradient-dot-white w-4 h-4" style="top: 15%; left: 8%; animation-delay: 0s;">
+                </div>
+                <div class="gradient-dot gradient-dot-red w-3 h-3" style="top: 25%; right: 15%; animation-delay: 0.8s;">
+                </div>
+                <div class="gradient-dot gradient-dot-white w-5 h-5"
+                    style="top: 35%; left: 70%; animation-delay: 1.2s;"></div>
+                <div class="gradient-dot gradient-dot-red w-3 h-3" style="top: 45%; left: 20%; animation-delay: 1.8s;">
+                </div>
+                <div class="gradient-dot gradient-dot-white w-4 h-4"
+                    style="top: 60%; right: 25%; animation-delay: 2.2s;"></div>
+                <div class="gradient-dot gradient-dot-red w-3 h-3" style="top: 70%; left: 15%; animation-delay: 2.8s;">
+                </div>
+                <div class="gradient-dot gradient-dot-white w-4 h-4"
+                    style="top: 80%; right: 40%; animation-delay: 3.2s;"></div>
+                <div class="gradient-dot gradient-dot-red w-3 h-3"
+                    style="bottom: 15%; left: 60%; animation-delay: 3.8s;"></div>
+
                 <!-- Large Bright Orbs -->
-                <div class="gradient-orb w-40 h-40" style="top: 10%; right: 10%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); animation-delay: 0s;"></div>
-                <div class="gradient-orb w-32 h-32" style="bottom: 20%; left: 5%; background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, rgba(239, 68, 68, 0.15) 50%, transparent 100%); animation-delay: 2s;"></div>
-                <div class="gradient-orb w-36 h-36" style="top: 40%; left: 10%; background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%); animation-delay: 4s;"></div>
-                
+                <div class="gradient-orb w-40 h-40"
+                    style="top: 10%; right: 10%; background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%); animation-delay: 0s;">
+                </div>
+                <div class="gradient-orb w-32 h-32"
+                    style="bottom: 20%; left: 5%; background: radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, rgba(239, 68, 68, 0.15) 50%, transparent 100%); animation-delay: 2s;">
+                </div>
+                <div class="gradient-orb w-36 h-36"
+                    style="top: 40%; left: 10%; background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%); animation-delay: 4s;">
+                </div>
+
                 <!-- Bright Small Particles -->
-                <div class="gradient-dot gradient-dot-white w-2 h-2" style="top: 20%; left: 30%; animation-delay: 0.5s;"></div>
-                <div class="gradient-dot gradient-dot-red w-2 h-2" style="top: 30%; right: 35%; animation-delay: 1.5s;"></div>
-                <div class="gradient-dot gradient-dot-white w-2 h-2" style="top: 50%; left: 45%; animation-delay: 2.5s;"></div>
-                <div class="gradient-dot gradient-dot-red w-2 h-2" style="bottom: 30%; right: 20%; animation-delay: 3.5s;"></div>
-                <div class="gradient-dot gradient-dot-white w-2 h-2" style="bottom: 40%; left: 35%; animation-delay: 4.5s;"></div>
-                
+                <div class="gradient-dot gradient-dot-white w-2 h-2"
+                    style="top: 20%; left: 30%; animation-delay: 0.5s;"></div>
+                <div class="gradient-dot gradient-dot-red w-2 h-2" style="top: 30%; right: 35%; animation-delay: 1.5s;">
+                </div>
+                <div class="gradient-dot gradient-dot-white w-2 h-2"
+                    style="top: 50%; left: 45%; animation-delay: 2.5s;"></div>
+                <div class="gradient-dot gradient-dot-red w-2 h-2"
+                    style="bottom: 30%; right: 20%; animation-delay: 3.5s;"></div>
+                <div class="gradient-dot gradient-dot-white w-2 h-2"
+                    style="bottom: 40%; left: 35%; animation-delay: 4.5s;"></div>
+
                 <!-- Medium Bright Elements -->
-                <div class="gradient-dot gradient-dot-red w-6 h-6" style="top: 25%; left: 55%; animation-delay: 1s; animation-duration: 6s;"></div>
-                <div class="gradient-dot gradient-dot-white w-5 h-5" style="bottom: 35%; right: 30%; animation-delay: 2s; animation-duration: 8s;"></div>
-                <div class="gradient-dot gradient-dot-red w-4 h-4" style="top: 65%; left: 40%; animation-delay: 3s; animation-duration: 5s;"></div>
+                <div class="gradient-dot gradient-dot-red w-6 h-6"
+                    style="top: 25%; left: 55%; animation-delay: 1s; animation-duration: 6s;"></div>
+                <div class="gradient-dot gradient-dot-white w-5 h-5"
+                    style="bottom: 35%; right: 30%; animation-delay: 2s; animation-duration: 8s;"></div>
+                <div class="gradient-dot gradient-dot-red w-4 h-4"
+                    style="top: 65%; left: 40%; animation-delay: 3s; animation-duration: 5s;"></div>
 
                 <!-- NEW: Hero Sparkles (like the button) -->
                 <div class="hero-sparkle" style="top: 18%; left: 12%; animation-delay: 0s;"></div>
@@ -1167,29 +1865,35 @@
                 <div class="hero-sparkle" style="top: 32%; left: 32%; animation-delay: 2.5s;"></div>
 
                 <!-- Enhanced Gradient Lines -->
-                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/60 via-yellow-500/40 to-transparent animate-pulse"></div>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/60 via-purple-500/40 to-transparent animate-pulse" style="animation-delay: 1s;"></div>
+                <div
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500/60 via-yellow-500/40 to-transparent animate-pulse">
+                </div>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/60 via-purple-500/40 to-transparent animate-pulse"
+                    style="animation-delay: 1s;"></div>
             </div>
-            
-            <!-- Overlay -->
+
+
             <!-- ENHANCEMENT: Reverted to solid overlay -->
-            <div class="absolute inset-0 bg-lihe-black bg-opacity-60"></div>
-            
+            <!-- <div class="absolute inset-0 bg-lihe-black bg-opacity-60"></div> -->
+
             <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center text-white">
                 <!-- Text Content -->
                 <div class="max-w-lg lg:max-w-2xl z-10 w-full lg:w-auto">
                     <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold !leading-tight hero-light-up">
                         <span class="text-lihe-red glow-text">IGNITE</span> YOUR FUTURE
                     </h1>
-                    <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-light hero-light-up" style="animation-delay: 0.5s;">
+                    <p class="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl font-light hero-light-up"
+                        style="animation-delay: 0.5s;">
                         Lincoln Institute of Higher Education: Innovation. Impact. Excellence.
                     </p>
-                    <div class="flex flex-col sm:flex-row mt-8 sm:mt-10 hero-light-up gap-3 sm:gap-4" style="animation-delay: 1s;">
+                    <div class="flex flex-col sm:flex-row mt-8 sm:mt-10 hero-light-up gap-3 sm:gap-4"
+                        style="animation-delay: 1s;">
                         <!-- Fizzy Button 1: Explore Programs -->
                         <div class="fizzy-button-container w-full sm:w-auto">
                             <input type="checkbox" id="fizzy-btn-explore" class="fizzy-input">
                             <label for="fizzy-btn-explore" class="fizzy-label w-full sm:w-auto">
-                                <div class="fizzy-button-inner bg-lihe-red hover:bg-white border-lihe-red w-full sm:w-auto">
+                                <div
+                                    class="fizzy-button-inner bg-lihe-red hover:bg-white border-lihe-red w-full sm:w-auto">
                                     <i class="fas fa-graduation-cap fizzy-icon"></i>
                                     <span class="fizzy-text">EXPLORE PROGRAMS</span>
                                     <div class="fizzy-tick"><i class="fas fa-check"></i></div>
@@ -1209,12 +1913,13 @@
                                 </div>
                             </label>
                         </div>
-                        
+
                         <!-- Fizzy Button 2: Apply Now -->
                         <div class="fizzy-button-container w-full sm:w-auto">
                             <input type="checkbox" id="fizzy-btn-apply" class="fizzy-input">
                             <label for="fizzy-btn-apply" class="fizzy-label w-full sm:w-auto">
-                                <div class="fizzy-button-inner bg-transparent border-white text-white hover:bg-white hover:text-lihe-black w-full sm:w-auto">
+                                <div
+                                    class="fizzy-button-inner bg-transparent border-white text-white hover:bg-white hover:text-lihe-black w-full sm:w-auto">
                                     <i class="fas fa-paper-plane fizzy-icon"></i>
                                     <span class="fizzy-text">APPLY NOW</span>
                                     <div class="fizzy-tick"><i class="fas fa-check"></i></div>
@@ -1256,39 +1961,57 @@
                                 A LEGACY OF EXCELLENCE, A FUTURE OF OPPORTUNITY
                             </h2>
                         </div>
-                        
+
                         <!-- ENHANCEMENT: Improved copy for engagement -->
                         <p class="mt-4 sm:mt-6 text-base sm:text-lg text-gray-700 leading-relaxed">
-                            Lincoln Institute of Higher Education (LIHE) is more than just a premier institution; it's a vibrant, global community where innovation thrives. Located in the dynamic heart of Sydney, we are dedicated to shaping the next generation of leaders, thinkers, and innovators.
+                            Lincoln Institute of Higher Education (LIHE) is more than just a premier institution; it's a
+                            vibrant, global community where innovation thrives. Located in the dynamic heart of Sydney,
+                            we are dedicated to shaping the next generation of leaders, thinkers, and innovators.
                         </p>
                         <p class="mt-4 text-base sm:text-lg text-gray-700 leading-relaxed">
-                            Our programs are meticulously designed to equip you with the deep knowledge and practical skills demanded by a globalized world. At LIHE, your education transcends the classroom, preparing you for real-world impact and lasting success.
+                            Our programs are meticulously designed to equip you with the deep knowledge and practical
+                            skills demanded by a globalized world. At LIHE, your education transcends the classroom,
+                            preparing you for real-world impact and lasting success.
                         </p>
-                        
+
                         <!-- ENHANCEMENT: Added hover shadow and transform to button -->
-                        <a href="#admissions" class="mt-6 sm:mt-8 inline-block px-6 sm:px-7 py-3 bg-lihe-black text-white font-semibold rounded-lg shadow-md hover:bg-lihe-red transition duration-300 text-sm sm:text-base hover:shadow-xl hover:-translate-y-1">
+                        <a href="#admissions"
+                            class="mt-6 sm:mt-8 inline-block px-6 sm:px-7 py-3 bg-lihe-black text-white font-semibold rounded-lg shadow-md hover:bg-lihe-red transition duration-300 text-sm sm:text-base hover:shadow-xl hover:-translate-y-1">
                             LEARN ABOUT ADMISSIONS
                         </a>
                     </div>
-                    
+
                     <!-- Image Carousel -->
                     <div class="animate-slide-left card-hover card-drop order-1 md:order-2">
-                        <div class="image-carousel relative w-full h-[300px] sm:h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
-                            <img id="carousel-img-1" src="studentcolab/c2.jpg" alt="Dynamic students collaborating" class="carousel-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="opacity: 1; z-index: 1;">
-                            <img id="carousel-img-2" src="studentcolab/c3.jpg" alt="Student innovation and learning" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="opacity: 0; z-index: 0;">
-                            <img id="carousel-img-3" src="studentcolab/c4.jpg" alt="Collaborative learning environment" class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000" style="opacity: 0; z-index: 0;">
-                            
+                        <div
+                            class="image-carousel relative w-full h-[300px] sm:h-[350px] md:h-[450px] rounded-2xl overflow-hidden shadow-2xl bg-gray-200">
+                            <img id="carousel-img-1" src="studentcolab/c2.jpg" alt="Dynamic students collaborating"
+                                class="carousel-image active absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                                style="opacity: 1; z-index: 1;">
+                            <img id="carousel-img-2" src="studentcolab/c3.jpg" alt="Student innovation and learning"
+                                class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                                style="opacity: 0; z-index: 0;">
+                            <img id="carousel-img-3" src="studentcolab/c4.jpg" alt="Collaborative learning environment"
+                                class="carousel-image absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+                                style="opacity: 0; z-index: 0;">
+
                             <!-- Carousel Indicators -->
                             <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
-                                <div class="carousel-indicator active w-3 h-3 rounded-full bg-white opacity-80 cursor-pointer transition-all duration-300 hover:opacity-100" data-index="0"></div>
-                                <div class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-40 cursor-pointer transition-all duration-300 hover:opacity-80" data-index="1"></div>
-                                <div class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-40 cursor-pointer transition-all duration-300 hover:opacity-80" data-index="2"></div>
+                                <div class="carousel-indicator active w-3 h-3 rounded-full bg-white opacity-80 cursor-pointer transition-all duration-300 hover:opacity-100"
+                                    data-index="0"></div>
+                                <div class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-40 cursor-pointer transition-all duration-300 hover:opacity-80"
+                                    data-index="1"></div>
+                                <div class="carousel-indicator w-3 h-3 rounded-full bg-white opacity-40 cursor-pointer transition-all duration-300 hover:opacity-80"
+                                    data-index="2"></div>
                             </div>
-                            
+
                             <!-- Debug: Loading indicator -->
-                            <div id="carousel-loading" class="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-600">
+                            <div id="carousel-loading"
+                                class="absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-600">
                                 <div class="text-center">
-                                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
+                                    <div
+                                        class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2">
+                                    </div>
                                     <p class="text-sm">Loading images...</p>
                                 </div>
                             </div>
@@ -1305,21 +2028,24 @@
                                 <i class="fas fa-building-columns text-3xl"></i>
                             </div>
                             <h4 class="font-semibold text-lihe-black text-xl mb-2">Industry-Aligned Curriculum</h4>
-                            <p class="text-base text-gray-600">Programs designed with industry input for real-world relevance.</p>
+                            <p class="text-base text-gray-600">Programs designed with industry input for real-world
+                                relevance.</p>
                         </div>
                         <div class="text-center">
                             <div class="feature-icon-box mx-auto mb-4">
                                 <i class="fas fa-user-tie text-3xl"></i>
                             </div>
                             <h4 class="font-semibold text-lihe-black text-xl mb-2">Expert Instructors</h4>
-                            <p class="text-base text-gray-600">Learn from experienced professionals and academic leaders.</p>
+                            <p class="text-base text-gray-600">Learn from experienced professionals and academic
+                                leaders.</p>
                         </div>
                         <div class="text-center">
                             <div class="feature-icon-box mx-auto mb-4">
                                 <i class="fas fa-globe-americas text-3xl"></i>
                             </div>
                             <h4 class="font-semibold text-lihe-black text-xl mb-2">Global Recognition</h4>
-                            <p class="text-base text-gray-600">Internationally recognized qualifications and credentials.</p>
+                            <p class="text-base text-gray-600">Internationally recognized qualifications and
+                                credentials.</p>
                         </div>
                     </div>
                 </div>
@@ -1333,76 +2059,107 @@
                     <span class="text-lihe-red font-semibold text-sm">OUR PROGRAMS</span>
                     <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">FEATURED COURSES</h2>
                     <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-                        Discover programs designed to launch your career. Our curriculum is industry-aligned and taught by leading experts.
+                        Discover programs designed to launch your career. Our curriculum is industry-aligned and taught
+                        by leading experts.
                     </p>
                 </div>
-                
+
                 <div class="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 stagger-animation">
                     <!-- Program 1: Business (MBA) -->
                     <!-- ENHANCEMENT: Added shadow-lg and hover:shadow-2xl for better depth -->
-                    <div class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-hover card-drop">
+                    <div
+                        class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-hover card-drop">
                         <div class="relative h-48 sm:h-56 md:h-72 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" alt="Business (MBA)" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80"
+                                alt="Business (MBA)"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                            </div>
                             <div class="absolute bottom-4 left-4 right-4">
                                 <h3 class="text-2xl font-bold text-white mb-2">Business (MBA)</h3>
-                                <p class="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
-                                    Our flagship MBA program for aspiring global leaders. Focus on strategy, leadership, and innovation.
+                                <p
+                                    class="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                    Our flagship MBA program for aspiring global leaders. Focus on strategy, leadership,
+                                    and innovation.
                                 </p>
                             </div>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-700 mb-4 leading-relaxed">Our flagship MBA program for aspiring global leaders. Focus on strategy, leadership, and innovation.</p>
-                            <a href="#" class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
+                            <p class="text-gray-700 mb-4 leading-relaxed">Our flagship MBA program for aspiring global
+                                leaders. Focus on strategy, leadership, and innovation.</p>
+                            <a href="#"
+                                class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
                                 Learn More
-                                <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </a>
                         </div>
                     </div>
 
                     <!-- Program 2: Information Technology -->
-                    <div class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-hover card-drop">
+                    <div
+                        class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-hover card-drop">
                         <div class="relative h-72 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Information Technology" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80"
+                                alt="Information Technology"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                            </div>
                             <div class="absolute bottom-4 left-4 right-4">
                                 <h3 class="text-2xl font-bold text-white mb-2">Information Technology</h3>
-                                <p class="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
-                                    Dive into cybersecurity, data science, and AI. Develop the tech skills for tomorrow's challenges.
+                                <p
+                                    class="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                    Dive into cybersecurity, data science, and AI. Develop the tech skills for
+                                    tomorrow's challenges.
                                 </p>
                             </div>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-700 mb-4 leading-relaxed">Dive into cybersecurity, data science, and AI. Develop the tech skills for tomorrow's challenges.</p>
-                            <a href="#" class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
+                            <p class="text-gray-700 mb-4 leading-relaxed">Dive into cybersecurity, data science, and AI.
+                                Develop the tech skills for tomorrow's challenges.</p>
+                            <a href="#"
+                                class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
                                 Learn More
-                                <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </a>
                         </div>
                     </div>
 
                     <!-- Program 3: Health Sciences -->
-                    <div class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-hover card-drop">
+                    <div
+                        class="group bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 card-hover card-drop">
                         <div class="relative h-72 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="Health Sciences" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
+                                alt="Health Sciences"
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+                            </div>
                             <div class="absolute bottom-4 left-4 right-4">
                                 <h3 class="text-2xl font-bold text-white mb-2">Health Sciences</h3>
-                                <p class="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
-                                    Lead the future of healthcare. Specialize in public health, administration, or clinical research.
+                                <p
+                                    class="text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-y-2 group-hover:translate-y-0">
+                                    Lead the future of healthcare. Specialize in public health, administration, or
+                                    clinical research.
                                 </p>
                             </div>
                         </div>
                         <div class="p-6">
-                            <p class="text-gray-700 mb-4 leading-relaxed">Lead the future of healthcare. Specialize in public health, administration, or clinical research.</p>
-                            <a href="#" class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
+                            <p class="text-gray-700 mb-4 leading-relaxed">Lead the future of healthcare. Specialize in
+                                public health, administration, or clinical research.</p>
+                            <a href="#"
+                                class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
                                 Learn More
-                                <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                <svg class="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7"></path>
                                 </svg>
                             </a>
                         </div>
@@ -1415,70 +2172,102 @@
         <section id="international" class="py-20 md:py-28 bg-gradient-enhanced text-white relative overflow-hidden">
             <!-- Subtle dot grid overlay -->
             <div class="subtle-dot-grid"></div>
-            
+
             <!-- Gradient orbs for depth -->
-            <div class="absolute -top-40 -left-40 w-80 h-80 bg-red-600/20 rounded-full filter blur-3xl opacity-40"></div>
-            <div class="absolute -bottom-40 -right-40 w-80 h-80 bg-yellow-600/20 rounded-full filter blur-3xl opacity-40"></div>
-            
+            <div class="absolute -top-40 -left-40 w-80 h-80 bg-red-600/20 rounded-full filter blur-3xl opacity-40">
+            </div>
+            <div
+                class="absolute -bottom-40 -right-40 w-80 h-80 bg-yellow-600/20 rounded-full filter blur-3xl opacity-40">
+            </div>
+
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
                 <!-- Enhanced Glass UI Container for Header -->
                 <div class="glass-panel rounded-2xl p-8 shadow-2xl mb-16">
                     <div class="text-center max-w-3xl mx-auto animate-on-scroll">
                         <span class="text-lihe-gold font-semibold text-sm">THE LIHE ADVANTAGE</span>
                         <h2 class="mt-2 text-4xl md:text-5xl font-bold text-white">WHY CHOOSE LIHE?</h2>
-                        <div class="w-32 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mt-4"></div>
+                        <div
+                            class="w-32 h-1 bg-gradient-to-r from-transparent via-yellow-500 to-transparent mx-auto mt-4">
+                        </div>
                         <p class="mt-6 text-lg text-gray-300 leading-relaxed">
                             We are dedicated to providing a supportive and enriching environment for all our students.
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="mt-16 grid md:grid-cols-3 gap-10 text-center stagger-animation">
                     <!-- Feature 1 - Enhanced with advanced glassmorphism -->
-                    <div class="glass-panel rounded-xl p-8 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 overflow-hidden group">
+                    <div
+                        class="glass-panel rounded-xl p-8 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 overflow-hidden group">
                         <!-- Background gradient on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/0 to-yellow-600/0 group-hover:from-red-600/10 group-hover:to-yellow-600/10 transition-all duration-500"></div>
-                        
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-red-600/0 to-yellow-600/0 group-hover:from-red-600/10 group-hover:to-yellow-600/10 transition-all duration-500">
+                        </div>
+
                         <div class="relative z-10">
-                            <div class="mb-6 p-3 bg-yellow-500/20 rounded-lg w-fit mx-auto border border-yellow-400/30 group-hover:border-yellow-300/60 group-hover:bg-yellow-500/30 transition-all duration-300">
-                                <i class="fas fa-globe-americas text-3xl text-lihe-gold group-hover:text-yellow-200 transition-colors"></i>
+                            <div
+                                class="mb-6 p-3 bg-yellow-500/20 rounded-lg w-fit mx-auto border border-yellow-400/30 group-hover:border-yellow-300/60 group-hover:bg-yellow-500/30 transition-all duration-300">
+                                <i
+                                    class="fas fa-globe-americas text-3xl text-lihe-gold group-hover:text-yellow-200 transition-colors"></i>
                             </div>
-                            <h3 class="mt-6 text-2xl font-bold text-white group-hover:text-yellow-200 transition-colors">GLOBAL NETWORK</h3>
-                            <p class="mt-3 text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">Join a diverse community of students and alumni from over 100 countries. Build connections that last a lifetime.</p>
+                            <h3
+                                class="mt-6 text-2xl font-bold text-white group-hover:text-yellow-200 transition-colors">
+                                GLOBAL NETWORK</h3>
+                            <p class="mt-3 text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                                Join a diverse community of students and alumni from over 100 countries. Build
+                                connections that last a lifetime.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Feature 2 - Enhanced with advanced glassmorphism -->
-                    <div class="glass-panel rounded-xl p-8 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 overflow-hidden group">
+                    <div
+                        class="glass-panel rounded-xl p-8 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 overflow-hidden group">
                         <!-- Background gradient on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/0 to-yellow-600/0 group-hover:from-red-600/10 group-hover:to-yellow-600/10 transition-all duration-500"></div>
-                        
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-red-600/0 to-yellow-600/0 group-hover:from-red-600/10 group-hover:to-yellow-600/10 transition-all duration-500">
+                        </div>
+
                         <div class="relative z-10">
-                            <div class="mb-6 p-3 bg-yellow-500/20 rounded-lg w-fit mx-auto border border-yellow-400/30 group-hover:border-yellow-300/60 group-hover:bg-yellow-500/30 transition-all duration-300">
-                                <i class="fas fa-briefcase text-3xl text-lihe-gold group-hover:text-yellow-200 transition-colors"></i>
+                            <div
+                                class="mb-6 p-3 bg-yellow-500/20 rounded-lg w-fit mx-auto border border-yellow-400/30 group-hover:border-yellow-300/60 group-hover:bg-yellow-500/30 transition-all duration-300">
+                                <i
+                                    class="fas fa-briefcase text-3xl text-lihe-gold group-hover:text-yellow-200 transition-colors"></i>
                             </div>
-                            <h3 class="mt-6 text-2xl font-bold text-white group-hover:text-yellow-200 transition-colors">INDUSTRY-READY</h3>
-                            <p class="mt-3 text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">Our strong ties with industry partners provide invaluable internship and employment opportunities.</p>
+                            <h3
+                                class="mt-6 text-2xl font-bold text-white group-hover:text-yellow-200 transition-colors">
+                                INDUSTRY-READY</h3>
+                            <p class="mt-3 text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                                Our strong ties with industry partners provide invaluable internship and employment
+                                opportunities.</p>
                         </div>
                     </div>
-                    
+
                     <!-- Feature 3 - Enhanced with advanced glassmorphism -->
-                    <div class="glass-panel rounded-xl p-8 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 overflow-hidden group">
+                    <div
+                        class="glass-panel rounded-xl p-8 transition-all duration-500 transform hover:scale-105 hover:-translate-y-3 overflow-hidden group">
                         <!-- Background gradient on hover -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/0 to-yellow-600/0 group-hover:from-red-600/10 group-hover:to-yellow-600/10 transition-all duration-500"></div>
-                        
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-red-600/0 to-yellow-600/0 group-hover:from-red-600/10 group-hover:to-yellow-600/10 transition-all duration-500">
+                        </div>
+
                         <div class="relative z-10">
-                            <div class="mb-6 p-3 bg-yellow-500/20 rounded-lg w-fit mx-auto border border-yellow-400/30 group-hover:border-yellow-300/60 group-hover:bg-yellow-500/30 transition-all duration-300">
-                                <i class="fas fa-map-marker-alt text-3xl text-lihe-gold group-hover:text-yellow-200 transition-colors"></i>
+                            <div
+                                class="mb-6 p-3 bg-yellow-500/20 rounded-lg w-fit mx-auto border border-yellow-400/30 group-hover:border-yellow-300/60 group-hover:bg-yellow-500/30 transition-all duration-300">
+                                <i
+                                    class="fas fa-map-marker-alt text-3xl text-lihe-gold group-hover:text-yellow-200 transition-colors"></i>
                             </div>
-                            <h3 class="mt-6 text-2xl font-bold text-white group-hover:text-yellow-200 transition-colors">PRIME SYDNEY LOCATION</h3>
-                            <p class="mt-3 text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">Study in one of the world's most beautiful and vibrant cities. Our campus is easily accessible and surrounded by opportunity.</p>
+                            <h3
+                                class="mt-6 text-2xl font-bold text-white group-hover:text-yellow-200 transition-colors">
+                                PRIME SYDNEY LOCATION</h3>
+                            <p class="mt-3 text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors">
+                                Study in one of the world's most beautiful and vibrant cities. Our campus is easily
+                                accessible and surrounded by opportunity.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
+
         <!-- Student Testimonials Section -->
         <section id="admissions" class="py-20 md:py-28 bg-white">
             <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -1486,17 +2275,26 @@
                     <span class="text-lihe-red font-semibold text-sm">STUDENT VOICES</span>
                     <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">WHAT OUR STUDENTS SAY</h2>
                 </div>
-                
+
                 <div class="mt-16 grid md:grid-cols-2 gap-8 stagger-animation">
                     <!-- Testimonial 1 -->
                     <!-- ENHANCEMENT: Added card-hover for luxury feel -->
                     <div class="bg-lihe-light-gray p-8 rounded-xl shadow-lg h-full card-drop card-hover">
-                        <svg class="w-10 h-10 text-lihe-red opacity-50" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4zm12 0c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4z"></path></svg>
+                        <svg class="w-10 h-10 text-lihe-red opacity-50" fill="currentColor" viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 12c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4zm12 0c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4z">
+                            </path>
+                        </svg>
                         <blockquote class="text-lg text-gray-700 leading-relaxed mt-2">
-                            "Choosing LIHE was the best decision I ever made. The support for international students is incredible, and my professors were industry experts who genuinely cared about my success. I feel fully prepared for my career in business."
+                            "Choosing LIHE was the best decision I ever made. The support for international students is
+                            incredible, and my professors were industry experts who genuinely cared about my success. I
+                            feel fully prepared for my career in business."
                         </blockquote>
                         <div class="mt-6 flex items-center">
-                            <img class="h-14 w-14 rounded-full" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%D&auto=format&fit=crop&w=800&q=80" alt="Student testimonial face">
+                            <img class="h-14 w-14 rounded-full"
+                                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%D&auto=format&fit=crop&w=800&q=80"
+                                alt="Student testimonial face">
                             <div class="ml-4">
                                 <p class="text-lg font-bold text-lihe-black">KENJI TANAKA</p>
                                 <p class="text-lihe-red font-medium">MBA Graduate</p>
@@ -1505,12 +2303,21 @@
                     </div>
                     <!-- Testimonial 2 -->
                     <div class="bg-lihe-light-gray p-8 rounded-xl shadow-lg h-full card-drop card-hover">
-                        <svg class="w-10 h-10 text-lihe-red opacity-50" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4zm12 0c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4z"></path></svg>
+                        <svg class="w-10 h-10 text-lihe-red opacity-50" fill="currentColor" viewBox="0 0 32 32"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 12c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4zm12 0c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4z">
+                            </path>
+                        </svg>
                         <blockquote class="text-lg text-gray-700 leading-relaxed mt-2">
-                            "The IT program at LIHE is hands-on and very practical. I had the opportunity to intern at a leading tech firm in Sydney, which led to a full-time job offer before I even graduated. The campus life is vibrant and welcoming."
+                            "The IT program at LIHE is hands-on and very practical. I had the opportunity to intern at a
+                            leading tech firm in Sydney, which led to a full-time job offer before I even graduated. The
+                            campus life is vibrant and welcoming."
                         </blockquote>
                         <div class="mt-6 flex items-center">
-                            <img class="h-14 w-14 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%D&auto=format&fit=crop&w=800&q=80" alt="Student testimonial face">
+                            <img class="h-14 w-14 rounded-full"
+                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%D&auto=format&fit=crop&w=800&q=80"
+                                alt="Student testimonial face">
                             <div class="ml-4">
                                 <p class="text-lg font-bold text-lihe-black">PRIYA SHARMA</p>
                                 <p class="text-lihe-red font-medium">B.Sc. Information Technology</p>
@@ -1528,23 +2335,19 @@
                     <span class="text-lihe-red font-semibold text-sm">STAY INFORMED</span>
                     <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">UPCOMING EVENTS</h2>
                     <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-                        Join our vibrant campus community. From open days to guest lectures, there's always something happening at LIHE.
+                        Join our vibrant campus community. From open days to guest lectures, there's always something
+                        happening at LIHE.
                     </p>
                 </div>
-                
+
                 <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
-                    
+
                     <!-- Event Card 1 -->
-                    <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop" 
-                         role="button" tabindex="0"
-                         data-title="Virtual Open Day"
-                         data-date-month="NOV"
-                         data-date-day="25"
-                         data-time="10:00 AM - 2:00 PM"
-                         data-location="Online Event"
-                         data-description="Explore our campus, meet faculty, and learn about our programs from anywhere in the world. This comprehensive virtual event is your all-access pass to life at LIHE."
-                         data-button-text="Register Now"
-                         data-button-link="#">
+                    <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop"
+                        role="button" tabindex="0" data-title="Virtual Open Day" data-date-month="NOV"
+                        data-date-day="25" data-time="10:00 AM - 2:00 PM" data-location="Online Event"
+                        data-description="Explore our campus, meet faculty, and learn about our programs from anywhere in the world. This comprehensive virtual event is your all-access pass to life at LIHE."
+                        data-button-text="Register Now" data-button-link="#">
                         <div class="p-6 flex items-start gap-5">
                             <div class="event-card-date">
                                 <span class="event-card-date-month">NOV</span>
@@ -1552,8 +2355,10 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-lihe-black mb-2">Virtual Open Day</h3>
-                                <p class="text-gray-700 text-base mb-4 leading-relaxed">Explore our campus, meet faculty, and learn about our programs from anywhere in the world.</p>
-                                <span class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
+                                <p class="text-gray-700 text-base mb-4 leading-relaxed">Explore our campus, meet
+                                    faculty, and learn about our programs from anywhere in the world.</p>
+                                <span
+                                    class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
                                     Register Now <i class="fas fa-arrow-right ml-2 text-sm"></i>
                                 </span>
                             </div>
@@ -1562,15 +2367,10 @@
 
                     <!-- Event Card 2 -->
                     <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop"
-                         role="button" tabindex="0"
-                         data-title="Guest Lecture: AI in Business"
-                         data-date-month="DEC"
-                         data-date-day="02"
-                         data-time="6:00 PM - 7:30 PM"
-                         data-location="Main Auditorium, LIHE Campus"
-                         data-description="Join Dr. Eva Rostova, a leader in AI strategy from Silicon Valley, as she discusses the future of artificial intelligence and its impact on modern business ecosystems."
-                         data-button-text="Learn More"
-                         data-button-link="#">
+                        role="button" tabindex="0" data-title="Guest Lecture: AI in Business" data-date-month="DEC"
+                        data-date-day="02" data-time="6:00 PM - 7:30 PM" data-location="Main Auditorium, LIHE Campus"
+                        data-description="Join Dr. Eva Rostova, a leader in AI strategy from Silicon Valley, as she discusses the future of artificial intelligence and its impact on modern business ecosystems."
+                        data-button-text="Learn More" data-button-link="#">
                         <div class="p-6 flex items-start gap-5">
                             <div class="event-card-date">
                                 <span class="event-card-date-month">DEC</span>
@@ -1578,25 +2378,22 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-lihe-black mb-2">Guest Lecture: AI in Business</h3>
-                                <p class="text-gray-700 text-base mb-4 leading-relaxed">Join Dr. Eva Rostova, a leader in AI strategy, as she discusses the future of artificial intelligence.</all>
-                                <span class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
-                                    Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                                </span>
+                                <p class="text-gray-700 text-base mb-4 leading-relaxed">Join Dr. Eva Rostova, a leader
+                                    in AI strategy, as she discusses the future of artificial intelligence.</all>
+                                    <span
+                                        class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
+                                        Learn More <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                                    </span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Event Card 3 -->
                     <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop"
-                         role="button" tabindex="0"
-                         data-title="International Student Mixer"
-                         data-date-month="DEC"
-                         data-date-day="15"
-                         data-time="4:00 PM - 6:00 PM"
-                         data-location="Student Lounge, Level 3"
-                         data-description="A fantastic opportunity to meet fellow students from around the globe, build new friendships, and celebrate the end of term with free food and music."
-                         data-button-text="RSVP Here"
-                         data-button-link="#">
+                        role="button" tabindex="0" data-title="International Student Mixer" data-date-month="DEC"
+                        data-date-day="15" data-time="4:00 PM - 6:00 PM" data-location="Student Lounge, Level 3"
+                        data-description="A fantastic opportunity to meet fellow students from around the globe, build new friendships, and celebrate the end of term with free food and music."
+                        data-button-text="RSVP Here" data-button-link="#">
                         <div class="p-6 flex items-start gap-5">
                             <div class="event-card-date">
                                 <span class="event-card-date-month">DEC</span>
@@ -1604,8 +2401,10 @@
                             </div>
                             <div>
                                 <h3 class="text-xl font-bold text-lihe-black mb-2">International Student Mixer</h3>
-                                <p class="text-gray-700 text-base mb-4 leading-relaxed">A fantastic opportunity to meet fellow students, build new friendships, and celebrate the end of term.</p>
-                                <span class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
+                                <p class="text-gray-700 text-base mb-4 leading-relaxed">A fantastic opportunity to meet
+                                    fellow students, build new friendships, and celebrate the end of term.</p>
+                                <span
+                                    class="inline-flex items-center text-lihe-red font-semibold hover:text-red-700 transition-colors duration-300">
                                     RSVP Here <i class="fas fa-arrow-right ml-2 text-sm"></i>
                                 </span>
                             </div>
@@ -1618,34 +2417,33 @@
                     <div class="text-center max-w-3xl mx-auto">
                         <h2 class="mt-2 text-3xl md:text-4xl font-bold text-lihe-black">FROM THE ARCHIVES</h2>
                         <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-                            Take a look at some of the successful events and memorable moments from our campus community.
+                            Take a look at some of the successful events and memorable moments from our campus
+                            community.
                         </p>
                     </div>
 
                     <div class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
-                        
+
                         <!-- Past Event Card 1 -->
                         <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop opacity-90"
-                             role="button" tabindex="0"
-                             data-title="Global Innovation Summit"
-                             data-date-month="SEP"
-                             data-date-day="18"
-                             data-time="All Day Event"
-                             data-location="LIHE Campus & Online"
-                             data-description="We hosted 20+ industry leaders to discuss the future of technology, sustainability, and global business practices. The event was a massive success with over 1,000 attendees."
-                             data-button-text="View Gallery"
-                             data-button-link="#">
+                            role="button" tabindex="0" data-title="Global Innovation Summit" data-date-month="SEP"
+                            data-date-day="18" data-time="All Day Event" data-location="LIHE Campus & Online"
+                            data-description="We hosted 20+ industry leaders to discuss the future of technology, sustainability, and global business practices. The event was a massive success with over 1,000 attendees."
+                            data-button-text="View Gallery" data-button-link="#">
                             <div class="p-6 flex items-start gap-5">
                                 <!-- Muted date box -->
-                                <div class="event-card-date bg-gray-500" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                                <div class="event-card-date bg-gray-500"
+                                    style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
                                     <span class="event-card-date-month">SEP</span>
                                     <span class="event-card-date-day">18</span>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-lihe-black mb-2">Global Innovation Summit</h3>
-                                    <p class="text-gray-700 text-base mb-4 leading-relaxed">We hosted 20+ industry leaders to discuss the future of technology and global business practices.</p>
+                                    <p class="text-gray-700 text-base mb-4 leading-relaxed">We hosted 20+ industry
+                                        leaders to discuss the future of technology and global business practices.</p>
                                     <!-- Muted link -->
-                                    <span class="inline-flex items-center text-gray-600 font-semibold hover:text-lihe-black transition-colors duration-300">
+                                    <span
+                                        class="inline-flex items-center text-gray-600 font-semibold hover:text-lihe-black transition-colors duration-300">
                                         View Gallery <i class="fas fa-camera-retro ml-2 text-sm"></i>
                                     </span>
                                 </div>
@@ -1654,24 +2452,22 @@
 
                         <!-- Past Event Card 2 -->
                         <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop opacity-90"
-                             role="button" tabindex="0"
-                             data-title="Annual Graduation Ceremony"
-                             data-date-month="JUL"
-                             data-date-day="05"
-                             data-time="2:00 PM"
-                             data-location="Sydney Opera House"
-                             data-description="Celebrating the achievements of our graduating class of 2024 at the iconic Sydney Opera House. A truly memorable day for our students, families, and faculty."
-                             data-button-text="Watch Highlights"
-                             data-button-link="#">
+                            role="button" tabindex="0" data-title="Annual Graduation Ceremony" data-date-month="JUL"
+                            data-date-day="05" data-time="2:00 PM" data-location="Sydney Opera House"
+                            data-description="Celebrating the achievements of our graduating class of 2024 at the iconic Sydney Opera House. A truly memorable day for our students, families, and faculty."
+                            data-button-text="Watch Highlights" data-button-link="#">
                             <div class="p-6 flex items-start gap-5">
-                                <div class="event-card-date bg-gray-500" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                                <div class="event-card-date bg-gray-500"
+                                    style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
                                     <span class="event-card-date-month">JUL</span>
                                     <span class="event-card-date-day">05</span>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-lihe-black mb-2">Annual Graduation Ceremony</h3>
-                                    <p class="text-gray-700 text-base mb-4 leading-relaxed">Celebrating the achievements of our graduating class of 2024 at the Sydney Opera House.</p>
-                                    <span class="inline-flex items-center text-gray-600 font-semibold hover:text-lihe-black transition-colors duration-300">
+                                    <p class="text-gray-700 text-base mb-4 leading-relaxed">Celebrating the achievements
+                                        of our graduating class of 2024 at the Sydney Opera House.</p>
+                                    <span
+                                        class="inline-flex items-center text-gray-600 font-semibold hover:text-lihe-black transition-colors duration-300">
                                         Watch Highlights <i class="fas fa-play-circle ml-2 text-sm"></i>
                                     </span>
                                 </div>
@@ -1680,24 +2476,22 @@
 
                         <!-- Past Event Card 3 -->
                         <div class="event-card bg-lihe-light-gray rounded-xl shadow-lg overflow-hidden card-drop opacity-90"
-                             role="button" tabindex="0"
-                             data-title="Cultural Diversity Week"
-                             data-date-month="MAY"
-                             data-date-day="22"
-                             data-time="All Week"
-                             data-location="LIHE Campus Quad"
-                             data-description="A week-long celebration of our global community with international food stalls, live music, dance performances, and traditional art workshops."
-                             data-button-text="Read More"
-                             data-button-link="#">
+                            role="button" tabindex="0" data-title="Cultural Diversity Week" data-date-month="MAY"
+                            data-date-day="22" data-time="All Week" data-location="LIHE Campus Quad"
+                            data-description="A week-long celebration of our global community with international food stalls, live music, dance performances, and traditional art workshops."
+                            data-button-text="Read More" data-button-link="#">
                             <div class="p-6 flex items-start gap-5">
-                                <div class="event-card-date bg-gray-500" style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
+                                <div class="event-card-date bg-gray-500"
+                                    style="box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);">
                                     <span class="event-card-date-month">MAY</span>
                                     <span class="event-card-date-day">22</span>
                                 </div>
                                 <div>
                                     <h3 class="text-xl font-bold text-lihe-black mb-2">Cultural Diversity Week</h3>
-                                    <p class="text-gray-700 text-base mb-4 leading-relaxed">A week-long celebration of our global community with food, music, and performances.</p>
-                                    <span class="inline-flex items-center text-gray-600 font-semibold hover:text-lihe-black transition-colors duration-300">
+                                    <p class="text-gray-700 text-base mb-4 leading-relaxed">A week-long celebration of
+                                        our global community with food, music, and performances.</p>
+                                    <span
+                                        class="inline-flex items-center text-gray-600 font-semibold hover:text-lihe-black transition-colors duration-300">
                                         Read More <i class="fas fa-book-open ml-2 text-sm"></i>
                                     </span>
                                 </div>
@@ -1719,44 +2513,53 @@
                     <span class="text-lihe-red font-semibold text-sm">TRUST & QUALITY</span>
                     <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">RECOGNITIONS & ACCREDITATIONS</h2>
                     <p class="mt-4 text-lg text-gray-700 leading-relaxed">
-                        LIHE proudly holds accreditations from leading national and international bodies, ensuring the highest standards of education and global recognition for your qualifications.
+                        LIHE proudly holds accreditations from leading national and international bodies, ensuring the
+                        highest standards of education and global recognition for your qualifications.
                     </p>
                 </div>
-                
+
                 <!-- Responsive Accreditation Grid -->
                 <div class="mt-16 accreditation-grid">
                     <!-- ENHANCEMENT: Added gold border for "luxury" feel, card-drop animation -->
                     <div class="accreditation-item card-drop" data-accreditation="teqsa">
-                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300"
+                            style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
                             <div class="bg-white rounded-xl p-6">
-                                <img src="accredition/teqsa.png" alt="TEQSA" class="w-full h-24 object-contain" loading="lazy" onerror="this.style.display='none'">
+                                <img src="accredition/teqsa.png" alt="TEQSA" class="w-full h-24 object-contain"
+                                    loading="lazy" onerror="this.style.display='none'">
                                 <h3 class="mt-4 text-sm font-bold text-lihe-black text-center">TEQSA</h3>
                                 <p class="text-xs text-gray-600 text-center mt-1">Quality Assurance</p>
                             </div>
                         </div>
                     </div>
                     <div class="accreditation-item card-drop" data-accreditation="cricos">
-                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300"
+                            style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
                             <div class="bg-white rounded-xl p-6">
-                                <img src="accredition/cricos.png" alt="CRICOS" class="w-full h-24 object-contain" loading="lazy" onerror="this.style.display='none'">
+                                <img src="accredition/cricos.png" alt="CRICOS" class="w-full h-24 object-contain"
+                                    loading="lazy" onerror="this.style.display='none'">
                                 <h3 class="mt-4 text-sm font-bold text-lihe-black text-center">CRICOS</h3>
                                 <p class="text-xs text-gray-600 text-center mt-1">International Students</p>
                             </div>
                         </div>
                     </div>
                     <div class="accreditation-item card-drop" data-accreditation="aqf">
-                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300"
+                            style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
                             <div class="bg-white rounded-xl p-6">
-                                <img src="accredition/aqf.png" alt="AQF" class="w-full h-24 object-contain" loading="lazy" onerror="this.style.display='none'">
+                                <img src="accredition/aqf.png" alt="AQF" class="w-full h-24 object-contain"
+                                    loading="lazy" onerror="this.style.display='none'">
                                 <h3 class="mt-4 text-sm font-bold text-lihe-black text-center">AQF</h3>
                                 <p class="text-xs text-gray-600 text-center mt-1">Qualification Framework</p>
                             </div>
                         </div>
                     </div>
                     <div class="accreditation-item card-drop" data-accreditation="acecqa">
-                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                        <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 hover:border-lihe-red transition-colors duration-300"
+                            style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
                             <div class="bg-white rounded-xl p-6">
-                                <img src="accredition/acecqa.png" alt="ACECQA" class="w-full h-24 object-contain" loading="lazy" onerror="this.style.display='none'">
+                                <img src="accredition/acecqa.png" alt="ACECQA" class="w-full h-24 object-contain"
+                                    loading="lazy" onerror="this.style.display='none'">
                                 <h3 class="mt-4 text-sm font-bold text-lihe-black text-center">ACECQA</h3>
                                 <p class="text-xs text-gray-600 text-center mt-1">Early Childhood</p>
                             </div>
@@ -1765,23 +2568,24 @@
                 </div>
             </div>
         </section>
-                </div>
+        </div>
 
-                <!-- Detailed Information Modal/Panel (Still functional) -->
-                <div id="accreditation-details" class="mt-12 bg-white rounded-xl shadow-lg p-8 hidden animate-on-scroll">
-                    <div class="flex justify-between items-start">
-                        <div class="flex-1">
-                            <h3 id="accreditation-title" class="text-2xl font-bold text-lihe-black"></h3>
-                            <p id="accreditation-description" class="mt-4 text-gray-700 leading-relaxed"></p>
-                            <div id="accreditation-benefits" class="mt-6">
-                                <h4 class="text-lg font-semibold text-lihe-red">Benefits for Students:</h4>
-                                <ul id="benefits-list" class="mt-2 space-y-2 text-gray-700"></ul>
-                            </div>
-                        </div>
-                        <button id="close-details" class="ml-6 text-gray-400 hover:text-gray-600 text-2xl font-bold">&times;</button>
+        <!-- Detailed Information Modal/Panel (Still functional) -->
+        <div id="accreditation-details" class="mt-12 bg-white rounded-xl shadow-lg p-8 hidden animate-on-scroll">
+            <div class="flex justify-between items-start">
+                <div class="flex-1">
+                    <h3 id="accreditation-title" class="text-2xl font-bold text-lihe-black"></h3>
+                    <p id="accreditation-description" class="mt-4 text-gray-700 leading-relaxed"></p>
+                    <div id="accreditation-benefits" class="mt-6">
+                        <h4 class="text-lg font-semibold text-lihe-red">Benefits for Students:</h4>
+                        <ul id="benefits-list" class="mt-2 space-y-2 text-gray-700"></ul>
                     </div>
                 </div>
+                <button id="close-details"
+                    class="ml-6 text-gray-400 hover:text-gray-600 text-2xl font-bold">&times;</button>
             </div>
+        </div>
+        </div>
         </section>
 
     </main>
@@ -1816,22 +2620,28 @@
                         <li><a href="#about" class="hover:text-lihe-gold transition duration-300">About LIHE</a></li>
                         <li><a href="#courses" class="hover:text-lihe-gold transition duration-300">All Courses</a></li>
                         <li><a href="#events" class="hover:text-lihe-gold transition duration-300">Events</a></li>
-                        <li><a href="#international" class="hover:text-lihe-gold transition duration-300">International Students</a></li>
+                        <li><a href="#international" class="hover:text-lihe-gold transition duration-300">International
+                                Students</a></li>
                         <li><a href="#" class="hover:text-lihe-gold transition duration-300">Student Support</a></li>
-                        <li><a href="#admissions" class="hover:text-lihe-gold transition duration-300">Apply Now</a></li>
+                        <li><a href="#admissions" class="hover:text-lihe-gold transition duration-300">Apply Now</a>
+                        </li>
                     </ul>
                 </div>
 
                 <!-- Column 3: Newsletter -->
                 <div>
                     <h5 class="text-xl font-bold">STAY CONNECTED</h5>
-                    <p class="mt-4 text-gray-300">Sign up for our newsletter to get the latest news and updates from LIHE.</p>
+                    <p class="mt-4 text-gray-300">Sign up for our newsletter to get the latest news and updates from
+                        LIHE.</p>
                     <form class="mt-4 flex">
-                        <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-l-lg border-0 text-gray-900 focus:ring-2 focus:ring-inset focus:ring-lihe-red" required>
+                        <input type="email" placeholder="Enter your email"
+                            class="w-full px-4 py-2 rounded-l-lg border-0 text-gray-900 focus:ring-2 focus:ring-inset focus:ring-lihe-red"
+                            required>
                         <div class="fizzy-button-container">
                             <input type="checkbox" id="fizzy-newsletter" class="fizzy-input">
                             <label for="fizzy-newsletter" class="fizzy-label">
-                                <button type="submit" class="fizzy-button-inner bg-lihe-red hover:bg-white hover:text-lihe-red border-lihe-red rounded-r-lg rounded-l-none min-w-16 h-auto">
+                                <button type="submit"
+                                    class="fizzy-button-inner bg-lihe-red hover:bg-white hover:text-lihe-red border-lihe-red rounded-r-lg rounded-l-none min-w-16 h-auto">
                                     <i class="fas fa-arrow-right fizzy-icon text-xs"></i>
                                     <span class="fizzy-text font-bold">GO</span>
                                     <div class="fizzy-tick"><i class="fas fa-check"></i></div>
@@ -1847,21 +2657,24 @@
                         </div>
                     </form>
                 </div>
-                
+
                 <!-- Column 4: Social Media -->
                 <div>
                     <h5 class="text-xl font-bold">FOLLOW US</h5>
                     <div class="flex space-x-4 mt-4">
                         <!-- Facebook -->
-                        <a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300" aria-label="Facebook">
+                        <a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300"
+                            aria-label="Facebook">
                             <i class="fab fa-facebook-f text-2xl"></i>
                         </a>
                         <!-- LinkedIn -->
-                        <a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300" aria-label="LinkedIn">
+                        <a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300"
+                            aria-label="LinkedIn">
                             <i class="fab fa-linkedin-in text-2xl"></i>
                         </a>
                         <!-- Instagram -->
-                        <a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300" aria-label="Instagram">
+                        <a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300"
+                            aria-label="Instagram">
                             <i class="fab fa-instagram text-2xl"></i>
                         </a>
                     </div>
@@ -1877,17 +2690,22 @@
     </footer>
 
     <!-- --- NEW: Event Modal --- -->
-    <div id="event-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div id="event-modal"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 hidden transition-opacity duration-300"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <!-- Backdrop -->
         <!-- ENHANCEMENT: Added backdrop-blur-sm for a subtle background blur -->
         <div id="event-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
 
         <!-- Modal Content -->
         <!-- ENHANCEMENT: Changed max-w-lg to max-w-2xl -->
-        <div class="glass-modal relative w-full max-w-2xl rounded-xl overflow-hidden animate-on-scroll" style="animation-delay: 0s !important;">
+        <div class="glass-modal relative w-full max-w-2xl rounded-xl overflow-hidden animate-on-scroll"
+            style="animation-delay: 0s !important;">
             <div class="p-6 md:p-8">
                 <!-- Close Button -->
-                <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-600 hover:text-lihe-red transition-colors duration-200" aria-label="Close modal">
+                <button id="modal-close-btn"
+                    class="absolute top-4 right-4 text-gray-600 hover:text-lihe-red transition-colors duration-200"
+                    aria-label="Close modal">
                     <i class="fas fa-times text-2xl"></i>
                 </button>
 
@@ -1905,12 +2723,13 @@
 
                 <!-- Title -->
                 <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-lihe-black mt-4"></h3>
-                
+
                 <!-- Description -->
                 <p id="modal-description" class="text-base text-gray-700 mt-4 leading-relaxed"></p>
 
                 <!-- Button -->
-                <a id="modal-button-link" href="#" class="mt-6 inline-block w-full text-center px-7 py-3 bg-lihe-red text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-300 text-base hover:shadow-xl hover:-translate-y-1">
+                <a id="modal-button-link" href="#"
+                    class="mt-6 inline-block w-full text-center px-7 py-3 bg-lihe-red text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-300 text-base hover:shadow-xl hover:-translate-y-1">
                     <span id="modal-button-text"></span>
                 </a>
             </div>
@@ -1929,11 +2748,11 @@
             // Enhanced mobile menu functionality
             menuButton.addEventListener('click', () => {
                 const isHidden = mobileMenu.classList.contains('hidden');
-                
+
                 mobileMenu.classList.toggle('hidden', !isHidden);
                 menuIcon.classList.toggle('hidden', isHidden);
                 closeIcon.classList.toggle('hidden', !isHidden);
-                
+
                 // Prevent body scroll when menu is open
                 if (isHidden) {
                     document.body.style.overflow = 'hidden';
@@ -1941,7 +2760,7 @@
                     document.body.style.overflow = '';
                 }
             });
-            
+
             // Close mobile menu when clicking on links
             const mobileLinks = mobileMenu.querySelectorAll('a');
             mobileLinks.forEach(link => {
@@ -1954,7 +2773,7 @@
                     document.getElementById('fizzy-mobile-menu').checked = false;
                 });
             });
-            
+
             // Close mobile menu on resize to desktop
             window.addEventListener('resize', () => {
                 if (window.innerWidth >= 768) {
@@ -1965,7 +2784,7 @@
                     document.getElementById('fizzy-mobile-menu').checked = false;
                 }
             });
-            
+
             // --- Header Scroll Logic ---
             const header = document.querySelector('header');
             window.addEventListener('scroll', () => {
@@ -2016,7 +2835,7 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
-                    
+
                     // Don't prevent default for modal buttons
                     if (targetId === '#') {
                         e.preventDefault();
@@ -2024,8 +2843,8 @@
                     }
 
                     const targetElement = document.querySelector(targetId);
-                    
-                    if(targetElement) {
+
+                    if (targetElement) {
                         e.preventDefault();
                         // Use the native smooth scroll behavior
                         targetElement.scrollIntoView({
@@ -2036,11 +2855,11 @@
 
                     // Close mobile menu if open
                     if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                         mobileMenu.classList.add('hidden');
-                         menuIcon.classList.remove('hidden');
-                         closeIcon.classList.add('hidden');
-                         document.body.style.overflow = '';
-                         document.getElementById('fizzy-mobile-menu').checked = false;
+                        mobileMenu.classList.add('hidden');
+                        menuIcon.classList.remove('hidden');
+                        closeIcon.classList.add('hidden');
+                        document.body.style.overflow = '';
+                        document.getElementById('fizzy-mobile-menu').checked = false;
                     }
                 });
             });
@@ -2051,7 +2870,7 @@
             const carouselLoading = document.getElementById('carousel-loading');
             let currentImageIndex = 0;
             let imagesLoaded = 0;
-            
+
             // Hide loading indicator when all images are loaded
             carouselImages.forEach((img) => {
                 if (img.complete) {
@@ -2074,13 +2893,13 @@
                     });
                 }
             });
-            
+
             // If all images are already loaded
             if (imagesLoaded === carouselImages.length) {
                 carouselLoading.style.display = 'none';
                 showImage(0);
             }
-            
+
             function showImage(index) {
                 // Hide all images
                 carouselImages.forEach((img, i) => {
@@ -2088,12 +2907,12 @@
                     img.style.opacity = '0';
                     img.style.zIndex = '0';
                 });
-                
+
                 // Update indicators
                 carouselIndicators.forEach((indicator, i) => {
                     indicator.classList.remove('active');
                 });
-                
+
                 // Show current image and indicator
                 if (carouselImages[index] && carouselIndicators[index]) {
                     carouselImages[index].classList.add('active');
@@ -2102,15 +2921,15 @@
                     carouselIndicators[index].classList.add('active');
                 }
             }
-            
+
             function nextImage() {
                 currentImageIndex = (currentImageIndex + 1) % carouselImages.length;
                 showImage(currentImageIndex);
             }
-            
+
             // Auto-cycle through images every 4 seconds
             setInterval(nextImage, 4000);
-            
+
             // Manual navigation with indicators
             carouselIndicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => {
@@ -2121,17 +2940,17 @@
 
             // --- Fizzy Button Interactions ---
             const fizzyButtons = document.querySelectorAll('.fizzy-input');
-            
+
             fizzyButtons.forEach((checkbox) => {
                 const label = checkbox.nextElementSibling;
                 const buttonInner = label.querySelector('.fizzy-button-inner');
-                
+
                 // Handle button clicks for navigation
                 label.addEventListener('click', (e) => {
                     // We only prevent default for navigation buttons, not the menu
                     if (checkbox.id === 'fizzy-btn-explore' || checkbox.id === 'fizzy-btn-apply') {
                         e.preventDefault();
-                        
+
                         // Check the button ID and navigate accordingly
                         if (checkbox.id === 'fizzy-btn-explore') {
                             // Find the target element
@@ -2145,10 +2964,10 @@
                                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                             }
                         }
-                        
+
                         // Trigger the animation
                         checkbox.checked = true;
-                        
+
                         // Reset after animation completes
                         setTimeout(() => {
                             checkbox.checked = false;
@@ -2156,7 +2975,7 @@
                     }
                     // Let the mobile menu button's click event propagate
                 });
-                
+
                 // Add sparkle effect on hover
                 if (buttonInner) {
                     buttonInner.addEventListener('mouseenter', () => {
@@ -2172,7 +2991,7 @@
             const eventModal = document.getElementById('event-modal');
             const modalBackdrop = document.getElementById('event-modal-backdrop');
             const modalCloseBtn = document.getElementById('modal-close-btn');
-            
+
             const modalTitle = document.getElementById('modal-title');
             const modalDateMonth = document.getElementById('modal-date-month');
             const modalDateDay = document.getElementById('modal-date-day');
@@ -2182,12 +3001,12 @@
             const modalButtonText = document.getElementById('modal-button-text');
             const modalButtonLink = document.getElementById('modal-button-link');
             const modalDateBox = document.getElementById('modal-date-box');
-            
+
             const eventCards = document.querySelectorAll('.event-card');
 
             function openModal(card) {
                 const data = card.dataset;
-                
+
                 // Populate modal
                 modalTitle.textContent = data.title;
                 modalDateMonth.textContent = data.dateMonth;
@@ -2210,7 +3029,7 @@
                 // Show modal
                 eventModal.classList.remove('hidden');
                 document.body.classList.add('modal-open');
-                
+
                 // Trigger animation
                 setTimeout(() => {
                     modalBackdrop.style.opacity = '1';
@@ -2221,7 +3040,7 @@
             function closeModal() {
                 const glassBox = eventModal.querySelector('.glass-modal');
                 glassBox.classList.remove('animate-in');
-                
+
                 // Add fade-out effect
                 setTimeout(() => {
                     eventModal.classList.add('hidden');
@@ -2241,7 +3060,7 @@
 
             modalCloseBtn.addEventListener('click', closeModal);
             modalBackdrop.addEventListener('click', closeModal);
-            
+
             // --- End Event Modal Logic ---
 
         });
@@ -2274,11 +3093,11 @@
             // 3.5. Texture Loader
             const textureLoader = new THREE.TextureLoader();
             // Use accreditation logos as requested
-            const texture1 = textureLoader.load('cubi/teqsa.png');    
-            const texture2 = textureLoader.load('cubi/cricos-bg.png');    
-            const texture3 = textureLoader.load('cubi/aqf.png');    
-            const texture4 = textureLoader.load('cubi/acecqa.png');    
-            
+            const texture1 = textureLoader.load('cubi/teqsa.png');
+            const texture2 = textureLoader.load('cubi/cricos-bg.png');
+            const texture3 = textureLoader.load('cubi/aqf.png');
+            const texture4 = textureLoader.load('cubi/acecqa.png');
+
             // 4. Lighting - Balanced lighting, not too bright, not too dark
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
             scene.add(ambientLight);
@@ -2288,75 +3107,75 @@
 
             // 5. Objects
             // Cube with textures
-            const cubeGeometry = new THREE.BoxGeometry(4.5, 4.5, 4.5);  
-            
+            const cubeGeometry = new THREE.BoxGeometry(4.5, 4.5, 4.5);
+
             // Create an array of materials for each face with darker appearance
             const materials = [
-                new THREE.MeshStandardMaterial({ 
+                new THREE.MeshStandardMaterial({
                     map: texture1,
                     roughness: 0.8,
                     metalness: 0.1
                 }), // right face (TEQSA)
-                new THREE.MeshStandardMaterial({ 
+                new THREE.MeshStandardMaterial({
                     map: texture2,
                     roughness: 0.8,
                     metalness: 0.1
                 }), // left face (CRICOS)
-                new THREE.MeshStandardMaterial({ 
+                new THREE.MeshStandardMaterial({
                     color: 0xeeeeee,
                     roughness: 0.9,
                     metalness: 0.05
                 }), // top face (darker white)
-                new THREE.MeshStandardMaterial({ 
+                new THREE.MeshStandardMaterial({
                     color: 0xeeeeee,
                     roughness: 0.9,
                     metalness: 0.05
                 }), // bottom face (darker white)
-                new THREE.MeshStandardMaterial({ 
+                new THREE.MeshStandardMaterial({
                     map: texture3,
                     roughness: 0.8,
                     metalness: 0.1
                 }), // front face (AQF)
-                new THREE.MeshStandardMaterial({ 
+                new THREE.MeshStandardMaterial({
                     map: texture4,
                     roughness: 0.8,
                     metalness: 0.1
                 })  // back face (ACECQA)
             ];
-            
+
             const cube = new THREE.Mesh(cubeGeometry, materials);
-            
+
             // Group Cube
             const cubeGroup = new THREE.Group();
             cubeGroup.add(cube);
-            cubeGroup.position.y = 2.5;  
+            cubeGroup.position.y = 2.5;
             scene.add(cubeGroup);
 
             // Round Plate
             const plateGeometry = new THREE.CylinderGeometry(3, 3, 1.2, 64); // Made plate much thicker
-            
+
             // Load logo texture for side face
             const sideTexture = textureLoader.load('logo/billboard.png');
-            
+
             sideTexture.wrapS = THREE.RepeatWrapping;
             sideTexture.wrapT = THREE.RepeatWrapping;
             sideTexture.repeat.set(4, 1); // Display image four times around the cylinder
-            
+
             // Create materials for Top, Bottom, and Sides (logo on side)
             const materialTop = new THREE.MeshStandardMaterial({ color: 0x666666, metalness: 0.3, roughness: 0.7 });
             const materialBottom = new THREE.MeshStandardMaterial({ color: 0x444444, metalness: 0.5, roughness: 0.5 });
-            const materialSide = new THREE.MeshStandardMaterial({ 
-                map: sideTexture, 
-                metalness: 0.2, 
-                roughness: 0.4 
+            const materialSide = new THREE.MeshStandardMaterial({
+                map: sideTexture,
+                metalness: 0.2,
+                roughness: 0.4
             });
-            
+
             const plateMaterials = [
                 materialSide,   // Side face
                 materialTop,    // Top face
                 materialBottom  // Bottom face
             ];
-            
+
             // Re-order materials for CylinderGeometry: [materialSide, materialTop, materialBottom]
             const plate = new THREE.Mesh(plateGeometry, [materialSide, materialTop, materialBottom]);
             plate.position.y = -0.95; // Adjusted position for new thickness
@@ -2367,7 +3186,7 @@
                 if (!container) return;
                 const width = container.clientWidth;
                 const height = container.clientHeight;
-                
+
                 if (width === 0 || height === 0) return;
 
                 camera.aspect = width / height;
@@ -2381,9 +3200,9 @@
                 requestAnimationFrame(animate);
 
                 // Cube group rotation (only Y-axis)
-                cubeGroup.rotation.y += 0.007;  
+                cubeGroup.rotation.y += 0.007;
                 // Cube group "hovering" (bobbing)
-                cubeGroup.position.y = 2.5 + Math.sin(Date.now() * 0.001) * 0.4; 
+                cubeGroup.position.y = 2.5 + Math.sin(Date.now() * 0.001) * 0.4;
 
                 // Plate rotation
                 plate.rotation.y -= 0.002;
@@ -2393,18 +3212,18 @@
 
             // Start animation
             animate();
-            
+
             // Initial call to set size
             onWindowResize();
         });
-        
+
         // --- Dynamic Graphics & Particle System ---
         function initDynamicGraphics() {
             const particleContainer = document.getElementById('particle-container');
             const dynamicGraphics = document.getElementById('dynamic-graphics');
-            
+
             if (!particleContainer || !dynamicGraphics) return;
-            
+
             // Create floating particles
             function createParticle() {
                 const particle = document.createElement('div');
@@ -2414,9 +3233,9 @@
                 particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 particle.style.animationName = 'float-glow';
                 particle.style.animationIterationCount = 'infinite';
-                
+
                 particleContainer.appendChild(particle);
-                
+
                 // Remove particle after animation
                 setTimeout(() => {
                     if (particle.parentNode) {
@@ -2424,29 +3243,29 @@
                     }
                 }, 5000);
             }
-            
+
             // Create particles periodically
             setInterval(createParticle, 500);
-            
+
             // Add interactive hover effects to floating shapes
             const floatingShapes = document.querySelectorAll('.floating-shape');
             floatingShapes.forEach(shape => {
-                shape.addEventListener('mouseenter', function() {
+                shape.addEventListener('mouseenter', function () {
                     this.style.transform += ' scale(1.5)';
                     this.style.opacity = '0.8';
                 });
-                
-                shape.addEventListener('mouseleave', function() {
+
+                shape.addEventListener('mouseleave', function () {
                     this.style.transform = this.style.transform.replace(' scale(1.5)', '');
                     this.style.opacity = '0.4';
                 });
             });
-            
+
             // Add random circuit lines
             function addCircuitLine() {
                 const line = document.createElement('div');
                 const isHorizontal = Math.random() > 0.5;
-                
+
                 if (isHorizontal) {
                     line.className = 'absolute h-px bg-gradient-to-r from-transparent via-red-400/30 to-transparent';
                     line.style.top = Math.random() * 100 + '%';
@@ -2460,20 +3279,20 @@
                     line.style.height = '100%';
                     line.style.animation = 'slide-down 4s linear';
                 }
-                
+
                 dynamicGraphics.appendChild(line);
-                
+
                 setTimeout(() => {
                     if (line.parentNode) {
                         line.parentNode.removeChild(line);
                     }
                 }, 6000);
             }
-            
+
             // Add circuit lines periodically
             setInterval(addCircuitLine, 3000);
         }
-        
+
         // Initialize dynamic graphics when DOM is ready
         document.addEventListener('DOMContentLoaded', () => {
             initDynamicGraphics();
@@ -2541,12 +3360,12 @@
                 item.addEventListener('click', () => {
                     const accreditationType = item.dataset.accreditation;
                     const data = accreditationData[accreditationType];
-                    
+
                     if (data) {
                         // Update details panel
                         document.getElementById('accreditation-title').textContent = data.title;
                         document.getElementById('accreditation-description').textContent = data.description;
-                        
+
                         // Update benefits list
                         const benefitsList = document.getElementById('benefits-list');
                         benefitsList.innerHTML = '';
@@ -2557,7 +3376,7 @@
                             li.className = 'flex items-start';
                             benefitsList.appendChild(li);
                         });
-                        
+
                         // Show details panel with animation
                         detailsPanel.classList.remove('hidden');
                         detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -2581,7 +3400,7 @@
             // Image loading error handling with fallback
             const accreditationImages = document.querySelectorAll('.accreditation-item img');
             accreditationImages.forEach(img => {
-                img.addEventListener('error', function() {
+                img.addEventListener('error', function () {
                     // Create a fallback placeholder
                     const fallback = document.createElement('div');
                     fallback.className = 'h-24 w-full bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 font-bold text-xs';
@@ -2589,7 +3408,7 @@
                     // We need to replace the img, which is inside a div, inside another div...
                     // Let's replace the parent's inner content
                     const parentBox = this.closest('.bg-white');
-                    if(parentBox) {
+                    if (parentBox) {
                         parentBox.innerHTML = '';
                         parentBox.appendChild(fallback);
                         // Try to add back the text
@@ -2604,4 +3423,5 @@
     </script>
 
 </body>
+
 </html>
