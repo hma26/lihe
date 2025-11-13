@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIHE - Ignite Your Future</title>
+    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font: Oswald (Headings) & Roboto (Body) --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Three.js CDN --><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* Custom color variables for LIHE palette */
+        :root {
+            --lihe-red: #E53935;   /* Bold Red */
+            --lihe-black: #1A1A1A; /* Deep Black */
+            --lihe-gold: #D4AF37;  /* Accent Gold */
+            --lihe-white: #FFFFFF;
+            --lihe-light-gray: #F5F5F5; /* Light background */
+        }
+        /* Applying custom colors via Tailwind's theme extension */
+        .bg-lihe-red { background-color: var(--lihe-red); }
+        .text-lihe-red { color: var(--lihe-red); }
+        .border-lihe-red { border-color: var(--lihe-red); }
+        
+        .bg-lihe-black { background-color: var(--lihe-black); }
+        .text-lihe-black { color: var(--lihe-black); }
+        .border-lihe-black { border-color: var(--lihe-black); }
+
+        .bg-lihe-gold { background-color: var(--lihe-gold); }
+        .text-lihe-gold { color: var(--lihe-gold); }
+        .border-lihe-gold { border-color: var(--lihe-gold); }
+        
+        .bg-lihe-light-gray { background-color: var(--lihe-light-gray); }
+        
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Simple fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Header Scroll Styles */
+        .header-scrolled {
+            background-color: var(--lihe-black) !important; /* Use important to override 'bg-white' */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .header-scrolled .nav-link {
+            color: white;
+        }
+        .header-scrolled .nav-link:hover {
+            color: var(--lihe-red);
+        }
+        .header-scrolled .logo-text {
+            color: white;
+        }
+        .header-scrolled .logo-icon {
+            background-color: var(--lihe-red);
+            color: var(--lihe-white);
+        }
+        .header-scrolled #mobile-menu-button {
+            color: white;
+        }
+
+        /* Image Recognition and Accreditation Styles */
+        .accreditation-item {
+            transition: all 0.3s ease;
+        }
+
+        .accreditation-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .accreditation-item .group:hover img {
+            filter: grayscale(0) brightness(1.1);
+            transform: scale(1.05);
+        }
+
+        /* Pulse animation for verified badges */
+        @keyframes pulse-green {
+            0%, 100% {
+                background-color: rgb(220, 252, 231);
+                border-color: rgb(34, 197, 94);
+            }
+            50% {
+                background-color: rgb(187, 247, 208);
+                border-color: rgb(22, 163, 74);
+            }
+        }
+
+        .verified-badge {
+            animation: pulse-green 2s infinite;
+        }
+
+        /* Loading spinner for verification */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        /* Image recognition confidence meter */
+        .confidence-meter {
+            background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #10b981 100%);
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .confidence-indicator {
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+
+        /* Enhanced hover effects for interactive elements */
+        .accreditation-item img {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Custom scrollbar for details panel */
+        #accreditation-details::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #accreditation-details::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 3px;
+        }
+
+        #accreditation-details::-webkit-scrollbar-thumb {
+            background: var(--lihe-red);
+            border-radius: 3px;
+        }
+
+        /* Horizontal Scrolling Styles */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* Internet Explorer 10+ */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;  /* Safari and Chrome */
+        }
+
+        /* Smooth scrolling for accreditation carousel */
+        #accreditation-carousel {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation arrows styling */
+        #scroll-left, #scroll-right {
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        #scroll-left:hover, #scroll-right:hover {
+            opacity: 1;
+        }
+
+        /* Auto-scroll animation */
+        @keyframes smooth-scroll {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-50%); }
+            100% { transform: translateX(0); }
+        }
+
+        .auto-scroll {
+            animation: smooth-scroll 15s infinite linear;
+        }
+
+        /* Enhanced accreditation item styling */
+        .accreditation-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Responsive adjustments for horizontal scroll */
+        @media (max-width: 768px) {
+            .accreditation-item {
+                width: 160px !important;
+            }
+            
+            #scroll-left, #scroll-right {
+                display: none;
+            }
+        }
+
+        /* Normal accreditation grid styles */
+        .accreditation-item {
+            transition: all 0.3s ease;
+        }
+
+        .accreditation-item:hover {
+            transform: scale(1.05);
+        }
+
+        .accreditation-item img {
+            width: 100%;
+            height: 96px;
+            object-fit: contain;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+    </style>
+</head>
+<body class="bg-lihe-white text-lihe-black">
+
+    <!-- Header / Navigation --><header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
+        <nav class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo --><a href="#" class="flex-shrink-0 flex items-center gap-2">
+                    <span class="bg-lihe-red text-white text-2xl font-bold p-2 rounded-lg logo-icon transition-colors duration-300">LI</span>
+                    <span class="text-2xl font-bold text-lihe-black logo-text transition-colors duration-300">LIHE</span>
+                </a>
+                
+                <!-- Desktop Navigation --><div class="hidden md:flex md:items-center md:space-x-8">
+                    <a href="#" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link">Home</a>
+                    <a href="#about" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link">About</a>
+                    <a href="#courses" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link">Courses</a>
+                    <a href="#admissions" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link">Admissions</a>
+                    <a href="#international" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link">International</a>
+                    <a href="#contact" class="text-lihe-black hover:text-lihe-red font-medium transition duration-300 nav-link">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button --><div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-lihe-black hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-lihe-red transition-colors duration-300">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Menu Icon --><svg id="menu-icon" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                        <!-- Close Icon --><svg id="close-icon" class="h-6 w-6 hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Mobile Menu (Dropdown) --><div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#about" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-3 py-2 rounded-md text-base font-medium">About</a>
+                <a href="#courses" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-3 py-2 rounded-md text-base font-medium">Courses</a>
+                <a href="#admissions" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-3 py-2 rounded-md text-base font-medium">Admissions</a>
+                <a href="#international" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-3 py-2 rounded-md text-base font-medium">International</a>
+                <a href="#contact" class="text-lihe-black hover:bg-gray-100 hover:text-lihe-red block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content --><main>
+        <!-- Hero Section --><section class="relative h-[80vh] min-h-[500px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1488972558814-7af0d4fb4931?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1931&q=80');">
+            <!-- Overlay --><div class="absolute inset-0 bg-lihe-black bg-opacity-50"></div>
+            
+            <div class="relative container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-full flex items-center text-white">
+                <!-- Text Content --><div class="max-w-lg z-10">
+                    <h1 class="text-5xl md:text-7xl font-bold !leading-tight">
+                        IGNITE YOUR FUTURE
+                    </h1>
+                    <p class="mt-6 text-lg md:text-xl font-light">
+                        Lincoln Institute of Higher Education: Innovation. Impact. Excellence.
+                    </p>
+                    <div class="flex flex-col sm:flex-row mt-10">
+                        <a href="#courses" class="px-8 py-3 bg-lihe-red text-white font-bold text-lg rounded-lg shadow-lg hover:bg-white hover:text-lihe-red transition duration-300 transform hover:scale-105">
+                            EXPLORE PROGRAMS
+                        </a>
+                        <a href="#admissions" class="mt-4 sm:mt-0 sm:ml-4 px-8 py-3 border-2 border-white text-white font-bold text-lg rounded-lg shadow-lg hover:bg-white hover:text-lihe-black transition duration-300 transform hover:scale-105">
+                            APPLY NOW
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3D Canvas Container (Absolute positioned, right side, hidden on mobile) --><div id="hero-3d-container" class="hidden md:block absolute top-0 right-0 w-1/2 h-full z-0">
+                    <!-- Canvas will be injected here by three.js --></div>
+            </div>
+        </section>
+
+        <!-- About LIHE Section --><section id="about" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+                <div class="fade-in">
+                    <div class="border-l-4 border-lihe-red pl-6">
+                        <span class="text-lihe-red font-semibold text-sm">WELCOME TO LIHE</span>
+                        <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">
+                            A LEGACY OF EXCELLENCE
+                        </h2>
+                    </div>
+                    
+                    <p class="mt-6 text-lg text-gray-700">
+                        Lincoln Institute of Higher Education (LIHE) is a premier institution dedicated to providing world-class education and fostering a vibrant, international community. Located in the dynamic city of Sydney, we offer a diverse range of programs designed to equip students with the knowledge and skills needed to succeed in a globalized world.
+                    </p>
+                    <a href="#admissions" class="mt-8 inline-block px-7 py-3 bg-lihe-black text-white font-semibold rounded-lg shadow-md hover:bg-lihe-red transition duration-300">
+                        LEARN ABOUT ADMISSIONS
+                    </a>
+                </div>
+                <div class="fade-in">
+                    <img src="https://images.unsplash.com/photo-1523240795610-957c62bca8b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                         alt="Dynamic students collaborating" 
+                         class="rounded-2xl shadow-2xl object-cover w-full h-full max-h-[450px]">
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Courses Section --><section id="courses" class="py-20 md:py-28 bg-lihe-light-gray">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto fade-in">
+                    <span class="text-lihe-red font-semibold text-sm">OUR PROGRAMS</span>
+                    <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">FEATURED COURSES</h2>
+                    <p class="mt-4 text-lg text-gray-700">
+                        Discover programs designed to launch your career. Our curriculum is industry-aligned and taught by leading experts.
+                    </p>
+                </div>
+                
+                <div class="mt-16 grid md:grid-cols-3 gap-8">
+                    <!-- Course Card 1: Icon Graphic --><div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col fade-in p-8 items-center text-center" style="animation-delay: 0.2s;">
+                        <div class="p-5 bg-lihe-red text-white rounded-full">
+                            <!-- Icon: Briefcase --><svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-lihe-black mt-6">Business (MBA)</h3>
+                        <p class="mt-3 text-gray-700 flex-grow">Our flagship MBA program for aspiring global leaders. Focus on strategy, leadership, and innovation.</p>
+                        <a href="#" class="mt-6 text-lihe-red font-bold hover:underline">Learn More &rarr;</a>
+                    </div>
+                    <!-- Course Card 2: Icon Graphic --><div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col fade-in p-8 items-center text-center" style="animation-delay: 0.4s;">
+                        <div class="p-5 bg-lihe-red text-white rounded-full">
+                            <!-- Icon: Code --><svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-lihe-black mt-6">Information Technology</h3>
+                        <p class="mt-3 text-gray-700 flex-grow">Dive into cybersecurity, data science, and AI. Develop the tech skills for tomorrow's challenges.</p>
+                        <a href="#" class="mt-6 text-lihe-red font-bold hover:underline">Learn More &rarr;</a>
+                    </div>
+                    <!-- Course Card 3: Icon Graphic --><div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col fade-in p-8 items-center text-center" style="animation-delay: 0.6s;">
+                        <div class="p-5 bg-lihe-red text-white rounded-full">
+                            <!-- Icon: Heartbeat --><svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-lihe-black mt-6">Health Sciences</h3>
+                        <p class="mt-3 text-gray-700 flex-grow">Lead the future of healthcare. Specialize in public health, administration, or clinical research.</p>
+                        <a href="#" class="mt-6 text-lihe-red font-bold hover:underline">Learn More &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose LIHE Section (Contrast Section) --><section id="international" class="py-20 md:py-28 bg-lihe-black text-white">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto fade-in">
+                    <span class="text-lihe-gold font-semibold text-sm">THE LIHE ADVANTAGE</span>
+                    <h2 class="mt-2 text-4xl md:text-5xl font-bold text-white">WHY CHOOSE LIHE?</h2>
+                    <p class="mt-4 text-lg text-gray-300">
+                        We are dedicated to providing a supportive and enriching environment for all our students.
+                    </p>
+                </div>
+                
+                <div class="mt-16 grid md:grid-cols-3 gap-10 text-center">
+                    <!-- Feature 1 --><div class="fade-in" style="animation-delay: 0.2s;">
+                        <div class="flex justify-center items-center h-16 w-16 text-lihe-gold mx-auto">
+                            <!-- Icon: Globe --><svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-bold text-white">GLOBAL NETWORK</h3>
+                        <p class="mt-3 text-gray-300">Join a diverse community of students and alumni from over 100 countries. Build connections that last a lifetime.</p>
+                    </div>
+                    <!-- Feature 2 --><div class="fade-in" style="animation-delay: 0.4s;">
+                        <div class="flex justify-center items-center h-16 w-16 text-lihe-gold mx-auto">
+                            <!-- Icon: Briefcase --><svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-bold text-white">INDUSTRY-READY</h3>
+                        <p class="mt-3 text-gray-300">Our strong ties with industry partners provide invaluable internship and employment opportunities.</p>
+                    </div>
+                    <!-- Feature 3 --><div class="fade-in" style="animation-delay: 0.6s;">
+                        <div class="flex justify-center items-center h-16 w-16 text-lihe-gold mx-auto">
+                            <!-- Icon: Map Pin --><svg class="h-12 w-12" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <h3 class="mt-6 text-2xl font-bold text-white">PRIME SYDNEY LOCATION</h3>
+                        <p class="mt-3 text-gray-300">Study in one of the world's most beautiful and vibrant cities. Our campus is easily accessible and surrounded by opportunity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Student Testimonials Section --><section id="admissions" class="py-20 md:py-28 bg-white">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto fade-in">
+                    <span class="text-lihe-red font-semibold text-sm">STUDENT VOICES</span>
+                    <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">WHAT OUR STUDENTS SAY</h2>
+                </div>
+                
+                <div class="mt-16 grid md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 --><div class="bg-lihe-light-gray p-8 rounded-xl shadow-lg fade-in" style="animation-delay: 0.2s;">
+                        <svg class="w-10 h-10 text-lihe-red opacity-50" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4zm12 0c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4z"></path></svg>
+                        <blockquote class="text-lg text-gray-700 leading-relaxed mt-2">
+                            "Choosing LIHE was the best decision I ever made. The support for international students is incredible, and my professors were industry experts who genuinely cared about my success. I feel fully prepared for my career in business."
+                        </blockquote>
+                        <div class="mt-6 flex items-center">
+                            <img class="h-14 w-14 rounded-full" src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Student testimonial face">
+                            <div class="ml-4">
+                                <p class="text-lg font-bold text-lihe-black">KENJI TANAKA</p>
+                                <p class="text-lihe-red font-medium">MBA Graduate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 --><div class="bg-lihe-light-gray p-8 rounded-xl shadow-lg fade-in" style="animation-delay: 0.4s;">
+                        <svg class="w-10 h-10 text-lihe-red opacity-50" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4zm12 0c0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4v4c0 2.21 1.79 4 4 4h4v-8h-4v-4z"></path></svg>
+                        <blockquote class="text-lg text-gray-700 leading-relaxed mt-2">
+                            "The IT program at LIHE is hands-on and very practical. I had the opportunity to intern at a leading tech firm in Sydney, which led to a full-time job offer before I even graduated. The campus life is vibrant and welcoming."
+                        </blockquote>
+                        <div class="mt-6 flex items-center">
+                            <img class="h-14 w-14 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Student testimonial face">
+                            <div class="ml-4">
+                                <p class="text-lg font-bold text-lihe-black">PRIYA SHARMA</p>
+                                <p class="text-lihe-red font-medium">B.Sc. Information Technology</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recognitions & Accreditation Section with Image Recognition --><section class="py-20 md:py-28 bg-lihe-light-gray">
+            <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto fade-in">
+                    <span class="text-lihe-red font-semibold text-sm">TRUST & QUALITY</span>
+                    <h2 class="mt-2 text-4xl md:text-5xl font-bold text-lihe-black">RECOGNITIONS & ACCREDITATIONS</h2>
+                    <p class="mt-4 text-lg text-gray-700">
+                        LIHE proudly holds accreditations from leading national and international bodies, ensuring the highest standards of education and global recognition for your qualifications.
+                    </p>
+                </div>
+                
+                <!-- Interactive Accreditation Showcase -->
+                <div class="mt-16">
+                    <!-- Normal Grid Container -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto" id="accreditation-carousel">
+                        <!-- TEQSA Accreditation -->
+                        <div class="fade-in group cursor-pointer accreditation-item" style="animation-delay: 0.2s;" data-accreditation="teqsa">
+                            <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 transition-all duration-300 group-hover:scale-105" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                                <div class="bg-white rounded-xl p-6">
+                                    <img src="teqsa.jpg" alt="TEQSA - Tertiary Education Quality and Standards Agency" class="w-full h-24 object-contain transition-all duration-300 hover:scale-110" loading="lazy" onerror="this.style.display='none'">
+                                    <h3 class="mt-4 text-sm font-bold text-lihe-black text-center group-hover:text-lihe-red transition-colors duration-300">TEQSA</h3>
+                                    <p class="text-xs text-gray-600 text-center mt-1">Quality Assurance</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- CRICOS Provider -->
+                        <div class="fade-in group cursor-pointer accreditation-item" style="animation-delay: 0.3s;" data-accreditation="cricos">
+                            <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 transition-all duration-300 group-hover:scale-105" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                                <div class="bg-white rounded-xl p-6">
+                                    <img src="cricos.gif" alt="CRICOS - Commonwealth Register of Institutions and Courses for Overseas Students" class="w-full h-24 object-contain transition-all duration-300 hover:scale-110" loading="lazy" onerror="this.style.display='none'">
+                                    <h3 class="mt-4 text-sm font-bold text-lihe-black text-center group-hover:text-lihe-red transition-colors duration-300">CRICOS</h3>
+                                    <p class="text-xs text-gray-600 text-center mt-1">International Students</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AQF Qualification -->
+                        <div class="fade-in group cursor-pointer accreditation-item" style="animation-delay: 0.4s;" data-accreditation="aqf">
+                            <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 transition-all duration-300 group-hover:scale-105" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                                <div class="bg-white rounded-xl p-6">
+                                    <img src="aqf.png" alt="AQF - Australian Qualifications Framework" class="w-full h-24 object-contain transition-all duration-300 hover:scale-110" loading="lazy" onerror="this.style.display='none'">
+                                    <h3 class="mt-4 text-sm font-bold text-lihe-black text-center group-hover:text-lihe-red transition-colors duration-300">AQF</h3>
+                                    <p class="text-xs text-gray-600 text-center mt-1">Qualification Framework</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- ACECQA Recognition -->
+                        <div class="fade-in group cursor-pointer accreditation-item" style="animation-delay: 0.5s;" data-accreditation="acecqa">
+                            <div class="relative overflow-hidden rounded-2xl border-4 border-yellow-400 p-1 transition-all duration-300 group-hover:scale-105" style="box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px #fbbf24;">
+                                <div class="bg-white rounded-xl p-6">
+                                    <img src="acecqa.png" alt="ACECQA - Australian Children's Education and Care Quality Authority" class="w-full h-24 object-contain transition-all duration-300 hover:scale-110" loading="lazy" onerror="this.style.display='none'">
+                                    <h3 class="mt-4 text-sm font-bold text-lihe-black text-center group-hover:text-lihe-red transition-colors duration-300">ACECQA</h3>
+                                    <p class="text-xs text-gray-600 text-center mt-1">Early Childhood</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Information Modal/Panel -->
+                <div id="accreditation-details" class="mt-12 bg-white rounded-xl shadow-lg p-8 hidden">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 id="accreditation-title" class="text-2xl font-bold text-lihe-black"></h3>
+                            <p id="accreditation-description" class="mt-4 text-gray-700 leading-relaxed"></p>
+                            <div id="accreditation-benefits" class="mt-6">
+                                <h4 class="text-lg font-semibold text-lihe-red">Benefits for Students:</h4>
+                                <ul id="benefits-list" class="mt-2 space-y-2 text-gray-700"></ul>
+                            </div>
+                        </div>
+                        <button id="close-details" class="ml-6 text-gray-400 hover:text-gray-600 text-2xl font-bold">&times;</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer --><footer id="contact" class="bg-lihe-black text-white pt-20 pb-10">
+        <div class="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-10">
+                <!-- Column 1: Contact Info --><div>
+                    <h5 class="text-xl font-bold">CONTACT US</h5>
+                    <ul class="mt-4 space-y-3 text-gray-300">
+                        <li class="flex items-start">
+                            <svg class="h-6 w-6 flex-shrink-0 mr-3 mt-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span>123 Education St, Sydney<br>NSW 2000, Australia</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 flex-shrink-0 mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span>+61 2 1234 5678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="h-5 w-5 flex-shrink-0 mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span>admissions@lihe.edu.au</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Column 2: Quick Links --><div>
+                    <h5 class="text-xl font-bold">QUICK LINKS</h5>
+                    <ul class="mt-4 space-y-2 text-gray-300">
+                        <li><a href="#about" class="hover:text-lihe-gold transition duration-300">About LIHE</a></li>
+                        <li><a href="#courses" class="hover:text-lihe-gold transition duration-300">All Courses</a></li>
+                        <li><a href="#international" class="hover:text-lihe-gold transition duration-300">International Students</a></li>
+                        <li><a href="#" class="hover:text-lihe-gold transition duration-300">Student Support</a></li>
+                        <li><a href="#" class="hover:text-lihe-gold transition duration-300">Apply Now</a></li>
+                        <li><a href="#" class="hover:text-lihe-gold transition duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Newsletter --><div>
+                    <h5 class="text-xl font-bold">STAY CONNECTED</h5>
+                    <p class="mt-4 text-gray-300">Sign up for our newsletter to get the latest news and updates from LIHE.</p>
+                    <form class="mt-4 flex">
+                        <input type="email" placeholder="Enter your email" class="w-full px-4 py-2 rounded-l-lg border-0 text-gray-900 focus:ring-2 focus:ring-inset focus:ring-lihe-red" required>
+                        <button type="submit" class="px-4 py-2 bg-lihe-red text-white font-bold rounded-r-lg hover:bg-opacity-80 transition duration-300">
+                            GO
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Column 4: Social Media --><div>
+                    <h5 class="text-xl font-bold">FOLLOW US</h5>
+                    <div class="flex space-x-4 mt-4">
+                        <!-- Facebook --><a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300">
+                            <span class="sr-only">Facebook</span>
+                            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.325 1.325 1.325h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+                        </a>
+                        <!-- LinkedIn --><a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300">
+                            <span class="sr-only">LinkedIn</span>
+                            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.97v16h4.97v-7.997c0-1.99.396-3.992 2.984-3.992 2.584 0 2.584 2.36 2.584 3.992v7.997h4.97v-8.998c0-4.99-1.06-8.997-6.932-8.997-3.014 0-5.164 1.72-6.002 3.497h-.02v-2.997h-4.97v16z"></path></svg>
+                        </a>
+                        <!-- Instagram --><a href="#" class="text-gray-300 hover:text-lihe-gold transition duration-300">
+                            <span class="sr-only">Instagram</span>
+                            <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.148 3.227-1.669 4.771-4.919 4.919-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.148-4.771-1.691-4.919-4.919-.058-1.265-.07-1.646-.07-4.85s.012-3.584.07-4.85c.148-3.227 1.669 4.771 4.919 4.919 1.266.058 1.646.07 4.85.07zm0-2.163c-3.259 0-3.667.014-4.947.072-4.305.197-6.021 1.919-6.218 6.218-.058 1.281-.072 1.689-.072 4.948s.014 3.667.072 4.947c.197 4.305 1.919 6.021 6.218 6.218 1.28.058 1.688.072 4.947.072s3.667-.014 4.947-.072c4.305-.197 6.021-1.919 6.218-6.218.058-1.281.072-1.689.072-4.947s-.014-3.667-.072-4.947c-.197-4.305-1.919-6.021-6.218-6.218-1.281-.058-1.689-.072-4.947-.072zM12 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.791-4-4s1.791-4 4-4 4 1.791 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom Bar --><div class="mt-10 pt-8 border-t border-gray-700 text-center text-gray-400">
+                <p>&copy; 2024 Lincoln Institute of Higher Education (LIHE). All rights reserved.</p>
+                <p class="text-sm mt-1">CRICOS Provider Code: 01234A</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu & Header Scroll --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            menuButton.addEventListener('click', () => {
+                const isOpen = mobileMenu.classList.toggle('hidden');
+                menuIcon.classList.toggle('hidden', !isOpen);
+                closeIcon.classList.toggle('hidden', isOpen);
+            });
+            
+            // --- Header Scroll Logic ---
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+            // --- End Header Scroll Logic ---
+
+            // Add fade-in animation observer
+            const fadeInElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeInElements.forEach(el => {
+                // Set initial state for JS-driven animation
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+                observer.observe(el);
+            });
+
+            // Smooth scroll for mobile menu links
+            document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+
+    <!-- Three.js Animation Script --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof THREE === 'undefined') {
+                console.error('THREE.js is not loaded');
+                return;
+            }
+
+            const container = document.getElementById('hero-3d-container');
+            if (!container) return;
+
+            // 1. Scene
+            const scene = new THREE.Scene();
+
+            // 2. Camera
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(0, 1.5, 8); 
+
+            // 3. Renderer
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // 4. Lighting
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+            scene.add(ambientLight);
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+            directionalLight.position.set(5, 10, 7);
+            scene.add(directionalLight);
+
+            // 5. Objects
+            // White Cube
+            const cubeGeometry = new THREE.BoxGeometry(4.5, 4.5, 4.5); 
+            const cubeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff }); 
+            const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            
+            // Black Border for Cube
+            const edges = new THREE.EdgesGeometry(cubeGeometry);
+            const lineMaterial = new THREE.LineBasicMaterial({ color: 0x1A1A1A }); // --lihe-black
+            const wireframe = new THREE.LineSegments(edges, lineMaterial);
+
+            // Group Cube and Wireframe
+            const cubeGroup = new THREE.Group();
+            cubeGroup.add(cube);
+            cubeGroup.add(wireframe);
+            cubeGroup.position.y = 2.5; 
+            scene.add(cubeGroup);
+
+            // Round Plate
+            const plateGeometry = new THREE.CylinderGeometry(3, 3, 0.2, 64); 
+            const plateMaterial = new THREE.MeshStandardMaterial({ 
+                color: 0x444444, // Dark grey
+                metalness: 0.5, 
+                roughness: 0.5 
+            });
+            const plate = new THREE.Mesh(plateGeometry, plateMaterial);
+            plate.position.y = -0.5; 
+            scene.add(plate);
+
+            // 6. Resize Handler
+            function onWindowResize() {
+                if (!container) return;
+                const width = container.clientWidth;
+                const height = container.clientHeight;
+                
+                if (width === 0 || height === 0) return;
+
+                camera.aspect = width / height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(width, height);
+            }
+            window.addEventListener('resize', onWindowResize, false);
+
+            // 7. Animation Loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Cube group rotation (only Y-axis)
+                cubeGroup.rotation.y += 0.007; 
+                // Cube group "hovering" (bobbing)
+                cubeGroup.position.y = 2.5 + Math.sin(Date.now() * 0.001) * 0.4; 
+
+                // Plate rotation
+                plate.rotation.y -= 0.002;
+
+                renderer.render(scene, camera);
+            }
+
+            // Start animation
+            animate();
+            
+            // Initial call to set size
+            onWindowResize();
+        });
+    </script>
+
+    <!-- Image Recognition & Accreditation JavaScript --><script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Accreditation data with detailed information
+            const accreditationData = {
+                teqsa: {
+                    title: 'TEQSA - Tertiary Education Quality and Standards Agency',
+                    description: 'TEQSA is Australia\'s independent national quality assurance and regulatory agency for higher education. LIHE is registered as a Higher Education Provider, ensuring our programs meet the highest academic standards and are recognized nationally.',
+                    benefits: [
+                        'Nationally recognized qualifications',
+                        'Quality assurance across all programs',
+                        'Student protection and support services',
+                        'Transferable credits to other Australian institutions',
+                        'Pathway to permanent residency eligibility'
+                    ]
+                },
+                cricos: {
+                    title: 'CRICOS - Commonwealth Register of Institutions',
+                    description: 'Our CRICOS registration (Provider Code: 01234A) allows LIHE to enroll international students and deliver courses to people studying in Australia on student visas. This ensures compliance with Australian Government requirements for international education.',
+                    benefits: [
+                        'Legal authority to enroll international students',
+                        'Student visa sponsorship capability',
+                        'Government-monitored quality standards',
+                        'Consumer protection for international students',
+                        'Compliance with Australian education regulations'
+                    ]
+                },
+                aqf: {
+                    title: 'AQF - Australian Qualifications Framework',
+                    description: 'AQF is the national policy for regulated qualifications in Australian education and training. All LIHE programs are aligned with AQF levels, ensuring clear pathways and recognition across Australia and internationally.',
+                    benefits: [
+                        'Internationally recognized qualification levels',
+                        'Clear pathways for further study',
+                        'Skills recognition across industries',
+                        'Enhanced employability prospects',
+                        'Seamless credit transfer opportunities'
+                    ]
+                },
+                acecqa: {
+                    title: 'ACECQA - Australian Children\'s Education and Care Quality Authority',
+                    description: 'ACECQA recognition ensures our Early Childhood Education programs meet national quality standards. This accreditation is essential for graduates seeking registration as early childhood teachers and educators.',
+                    benefits: [
+                        'Professional registration eligibility',
+                        'Industry-standard qualification recognition',
+                        'Enhanced career opportunities in childcare',
+                        'Compliance with national quality frameworks',
+                        'Pathway to advanced early childhood roles'
+                    ]
+                }
+            };
+
+            // Image Recognition Simulation
+            const imageRecognition = {
+                patterns: {
+                    'teqsa': ['education', 'quality', 'standards', 'tertiary', 'government', 'australia'],
+                    'cricos': ['international', 'students', 'commonwealth', 'register', 'visa'],
+                    'aqf': ['qualifications', 'framework', 'levels', 'recognition', 'pathways'],
+                    'acecqa': ['children', 'early', 'childhood', 'education', 'care', 'quality']
+                },
+                
+                recognizeImage: function(imageSrc) {
+                    // Simulate image recognition by extracting filename
+                    const filename = imageSrc.split('/').pop().toLowerCase();
+                    const baseName = filename.split('.')[0];
+                    
+                    // Check for pattern matches
+                    for (let [key, keywords] of Object.entries(this.patterns)) {
+                        if (baseName.includes(key) || keywords.some(keyword => baseName.includes(keyword))) {
+                            return {
+                                identified: true,
+                                accreditation: key,
+                                confidence: Math.random() * 0.3 + 0.7, // 70-100% confidence
+                                timestamp: new Date().toISOString()
+                            };
+                        }
+                    }
+                    
+                    return {
+                        identified: false,
+                        confidence: 0,
+                        timestamp: new Date().toISOString()
+                    };
+                }
+            };
+
+            // Interactive accreditation items
+            const accreditationItems = document.querySelectorAll('.accreditation-item');
+            const detailsPanel = document.getElementById('accreditation-details');
+            const closeButton = document.getElementById('close-details');
+
+            accreditationItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const accreditationType = item.dataset.accreditation;
+                    const data = accreditationData[accreditationType];
+                    
+                    if (data) {
+                        // Simulate image recognition
+                        const img = item.querySelector('img');
+                        const recognition = imageRecognition.recognizeImage(img.src);
+                        
+                        // Update details panel
+                        document.getElementById('accreditation-title').textContent = data.title;
+                        document.getElementById('accreditation-description').textContent = data.description;
+                        
+                        // Update benefits list
+                        const benefitsList = document.getElementById('benefits-list');
+                        benefitsList.innerHTML = '';
+                        data.benefits.forEach(benefit => {
+                            const li = document.createElement('li');
+                            li.innerHTML = `<span class="text-lihe-red">✓</span> ${benefit}`;
+                            li.className = 'flex items-start space-x-2';
+                            benefitsList.appendChild(li);
+                        });
+                        
+                        // Show recognition result
+                        if (recognition.identified) {
+                            const recognitionBadge = document.createElement('div');
+                            recognitionBadge.className = 'mt-4 p-3 bg-green-100 border border-green-300 rounded-lg';
+                            recognitionBadge.innerHTML = `
+                                <div class="flex items-center">
+                                    <svg class="h-5 w-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-green-700 font-medium">Image Verified (${Math.round(recognition.confidence * 100)}% confidence)</span>
+                                </div>
+                            `;
+                            document.getElementById('accreditation-benefits').appendChild(recognitionBadge);
+                        }
+                        
+                        // Show details panel with animation
+                        detailsPanel.classList.remove('hidden');
+                        detailsPanel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }
+                });
+            });
+
+            // Close details panel
+            closeButton.addEventListener('click', () => {
+                detailsPanel.classList.add('hidden');
+            });
+
+            // Image loading error handling with fallback
+            const accreditationImages = document.querySelectorAll('.accreditation-item img');
+            accreditationImages.forEach(img => {
+                img.addEventListener('error', function() {
+                    // Create a fallback placeholder
+                    const fallback = document.createElement('div');
+                    fallback.className = 'h-20 w-20 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 font-bold text-xs';
+                    fallback.textContent = this.alt.split(' - ')[0] || 'LOGO';
+                    this.parentNode.replaceChild(fallback, this);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
